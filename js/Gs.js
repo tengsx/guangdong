@@ -1,0 +1,2 @@
+(function($){$.fn.Gs=function(options){var defaults={oid:'',left:5,};options=$.extend(defaults,options)
+$(document).on('mousemove',function(ev){var ev=ev||window.event;var mousex=ev.pageX/options.left;var pageW=$(window).width()/2/options.left;var place=(mousex-pageW);$(''+options.oid+'').css({backgroundPositionX:place+'px'});});}})(jQuery)

@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>广东省投资项目管理服务平台</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/echarts.js"></script>
+	<script src="js/guangdong.js"></script>
+  <script src="js/huizhou.js"></script>
+  <script src="js/layer/layer.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=YhpDkDY18AhmUAcT9UKdiDQ7ojZKCSF0"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+</head>
+<body >
+	<div class="container">
+		<div class="header">
+			<div class="sys sys-stop">
+				
+			</div>
+			<div class="sys sys-tab">
+				<span>当前系统 </span>
+				<select name="" id="select-molde" onchange="chooseModlue(this)">
+					<option value="0">项目总览</option>
+					<option value="1" selected>中央预算内投资项目展示</option>
+		         	<option value="2">重点项目计划展示</option>
+		            <option value="3">在线审批平台项目展示</option>
+		            <option value="4">政府投资项目展示</option>
+				</select>
+			</div>
+			<div class="sys sys-time">
+				<span id="time"></span>
+      </div>
+      <div class="sys sys-back" onclick="backTo()">
+        <img src="images/home.png" alt="">
+        <span>主页</span>
+			</div>
+		</div>
+	<div class="content">
+		<div class="timeline">
+			<div id="timeline">
+				<p >2019.12</p>
+				<p>2019.06</p>
+				<p>2018.12</p>
+				<p>2018.06</p>
+				<p>2017.12</p>
+				<p>2017.06</p>
+				<p>2016.12</p>
+				<p class="active">2016.06</p>
+			</div>
+		</div>
+		<div class="content-top">
+			<div class="top-l">
+				<div class="pro-map item">
+          <div class="map-sum">
+            <p class="map-sum-title">项目总数（个）</p>
+            <div class="map-sum-num">
+              <span class="num-item">1</span>
+              <span class="num-item">5</span>
+              <span class="num-item">3</span>
+              <span class="num-trend">+13.7%</span>
+              <span class="num-trend-img"></span>
+            </div>
+          </div>
+          <div class="data-tab" id="data-tab">
+            <div class="item active">
+              <span>项目数</span>
+            </div>
+            <div class="item">
+              <span>总投资</span>
+            </div>
+          </div>
+          <div class="data-tab map-tab">
+            <div class="item active">
+              <span>3D</span>
+            </div>
+            <div class="item">
+              <span>卫星</span>
+            </div>
+          </div>
+          <!-- <div class="map-zoom">
+            <span></span>
+            <span></span>
+            <span>100%</span>
+          </div> -->
+          <div class="map-back" onclick="mapBack()">
+            <img src="images/centralInvest/map-back.png" alt="">
+            <span>全省地图</span>
+            <img src="images/centralInvest/map.png" alt="">
+          </div>
+          <div class="to-big"></div>
+					<div class="data-tab data-area">
+						<span>当前：</span>
+						<span id="mapArea">广东省</span>
+          </div>
+          <div class="bmap-legend">
+            <div class="legend-title">图例</div>
+            <div><img src="images/legend-01.png" alt=""><span>未开工</span></div>
+            <div><img src="images/legend-02.png" alt=""><span>已开工</span></div>
+            <div><img src="images/legend-03.png" alt=""><span>已竣工</span></div>
+          </div>
+          <div class="map-wrap" style="width: 100%;height: 100%;">
+            <div id="map" style="width: 100%;height: 100%;"></div>
+          </div>
+          <div class="bmap-wrap">
+            <div id="bmap" style="width: 100%;height: 100%"></div>
+          </div>
+				</div>
+			</div>
+			<div class="top-r">
+				<div class="item pro-status">
+          <div class="to-big"></div>
+					<p class="item-title">按项目状态统计</p>
+					<img class="jian" src="images/jian.png" alt="">
+					<img class="jian" src="images/jian.png" alt="">
+					<div>
+						<div class="status-item">
+							<img class="rotate-img" src="images/centralInvest/sItem-bg.png" alt="">
+							<div class="status-item-num" id="wkg">61</div>
+							<div class="status-item-text">未开工（个）</div>
+						</div>
+						<div class="status-item">
+							<img class="rotate-img" src="images/centralInvest/sItem-bg2.png" alt="">
+							<div class="status-item-num" id="ykg" style="color: #05ff83">80</div>
+							<div class="status-item-text">已开工（个）</div>
+						</div>
+						<div class="status-item">
+							<img class="rotate-img" src="images/centralInvest/sItem-bg3.png" alt="">
+							<div class="status-item-num" id="ywg" style="color: #8c7cff">12</div>
+							<div class="status-item-text">已完工（个）</div>
+						</div>
+					</div>
+				</div>
+				<div class="item pro-invest">
+          <p class="item-title">按政府投资方向统计 </p>
+          <div class="to-big"></div>
+					<div id="echarts" style="width: 100%;height: 100%"></div>
+				</div>
+			</div>
+		</div>
+		<div class="content-bottom">
+			<div class="bottom-l">
+				<div class="item pro-industry">
+          <p class="item-title">按行业汇总统计</p>
+          <div class="to-big"></div>
+					<div id="industry" style="width: 100%;height: 100%;"></div>
+				</div>
+			</div>
+			<div class="bottom-r">
+				<div class="item pro-important">
+          <p class="item-title">按重点业务汇总</p>
+          <div class="to-big"></div>
+					<div id="important" style="width: 100%;height: 100%;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script src="js/common.js"></script>
+	<script>
+			var guangdongData=[
+				{
+					investOrient:[
+						[35,20,0,40,0,60,70,40,50,58.75],
+						[24,26,34,47,43,53,78,22,84,92],
+						[38,44,46,64,68,75,78,12,12,32],
+						[56,52,53,87,96,32,12,72,44,52],
+						[47,85,31,57,64,75,78,22,24,92]
+					],
+					industryProject:[
+						[173,62,140,150,64,105,175,169,216,148,34,56,85,234,53,145],
+						[73,162,40,50,84,150,135,129,166,248,134,256,185,234,53,155],
+						[63,72,130,110,164,65,45,169,216,148,34,56,135,174,213,165],
+						[123,162,120,120,64,95,65,169,216,58,234,156,45,84,73,185],
+						[133,82,170,140,164,45,135,169,216,148,54,256,75,94,153,45]
+					],
+					importantProject:[
+						[73,162,140,150],
+						[173,162,140,120],
+						[45,14,124,110],
+						[63,132,156,120],
+						[23,115,153,80]
+					],
+					workStatus:{
+						wk:0,
+						kg:67,
+						wg:9,
+					},
+					mapData:convertData(guangdongMap),
+					map:{
+						xq:83.32,
+						xd:41.66,
+						dw:39.88,
+						zf:30.51,
+						wc:32.57
+					}
+				},
+				{
+					investOrient:[
+						[43,64,53,87,96,32,12,72,44,52],
+						[78,11,31,57,64,75,78,22,24,92],
+						[34,23,35,15,67,85,63,35,23,42],
+						[14,53,45,47,43,53,78,22,84,92],
+						[56,85,46,64,68,75,78,12,12,32],
+					],
+					industryProject:[
+						[123,162,120,120,64,95,65,169,216,58,234,156,45,84,73,185],
+						[133,82,170,140,164,45,135,169,216,148,54,256,75,94,153,45],
+						[173,62,140,150,64,105,175,169,216,148,34,56,85,234,53,145],
+						[73,162,40,50,84,150,135,129,166,248,134,256,185,234,53,155],
+						[63,72,130,110,164,65,45,169,216,148,34,56,135,174,213,165],
+					],
+					importantProject:[
+						[63,132,156,120],
+						[23,115,153,80],
+						[73,162,140,150],
+						[173,162,140,120],
+						[45,14,124,110],
+					],
+					workStatus:{
+						wk:21,
+						kg:25,
+						wg:3,
+					},
+					mapData:convertData(guangdongMap),
+					map:{
+						xq:83.32,
+						xd:49.02,
+						dw:45.76,
+						zf:41.11,
+						wc:46.28
+					}
+				},
+				{
+					investOrient:[
+						[14,53,45,47,43,53,78,22,84,92],
+						[56,85,46,64,68,75,78,12,12,32],
+						[43,64,53,87,96,32,12,72,44,52],
+						[78,11,31,57,64,75,78,22,24,92],
+						[34,23,35,15,67,85,63,35,23,42],
+					],
+					industryProject:[
+						[73,162,40,50,84,150,135,129,166,248,134,256,185,234,53,155],
+						[63,72,130,110,164,65,45,169,216,148,34,56,135,174,213,165],
+						[123,162,120,120,64,95,65,169,216,58,234,156,45,84,73,185],
+						[133,82,170,140,164,45,135,169,216,148,54,256,75,94,153,45],
+						[173,62,140,150,64,105,175,169,216,148,34,56,85,234,53,145],
+					],
+					importantProject:[
+						[173,162,140,120],
+						[45,14,124,110],
+						[63,132,156,120],
+						[23,115,153,80],
+						[73,162,140,150],
+						
+					],
+					workStatus:{
+						wk:0,
+						kg:141,
+						wg:29,
+					},
+					mapData:convertData(guangdongMap),
+					map:{
+						xq:90.66,
+						xd:45.65,
+						dw:45.51,
+						zf:39.05,
+						wc:42.08
+					}
+				},
+				{
+					investOrient:[
+						[78,11,31,57,64,75,78,22,24,92],
+						[34,23,35,15,67,85,63,35,23,42],
+						[14,53,45,47,43,53,78,22,84,92],
+						[56,85,46,64,68,75,78,12,12,32],
+						[43,64,53,87,96,32,12,72,44,52],
+					],
+					industryProject:[
+						[133,82,170,140,164,45,135,169,216,148,54,256,75,94,153,45],
+						[173,62,140,150,64,105,175,169,216,148,34,56,85,234,53,145],
+						[73,162,40,50,84,150,135,129,166,248,134,256,185,234,53,155],
+						[63,72,130,110,164,65,45,169,216,148,34,56,135,174,213,165],
+						[123,162,120,120,64,95,65,169,216,58,234,156,45,84,73,185],
+					],
+					importantProject:[
+						[23,115,153,80],
+						[73,162,140,150],
+						[173,162,140,120],
+						[45,14,124,110],
+						[63,132,156,120],
+					],
+					mapData:convertData(guangdongMap),
+					workStatus:{
+						wk:14,
+						kg:80,
+						wg:12,
+					},
+					map:{
+						xq:90.66,
+						xd:28.99,
+						dw:25.99,
+						zf:17.88,
+						wc:21.04
+					}
+				},
+				{
+					investOrient:[
+						[56,85,46,64,68,75,78,12,12,32],
+						[43,64,53,87,96,32,12,72,44,52],
+						[78,11,31,57,64,75,78,22,24,92],
+						[34,23,35,15,67,85,63,35,23,42],
+						[14,53,45,47,43,53,78,22,84,92],
+					],
+					industryProject:[
+						[63,72,130,110,164,65,45,169,216,148,34,56,135,174,213,165],
+						[123,162,120,120,64,95,65,169,216,58,234,156,45,84,73,185],
+						[133,82,170,140,164,45,135,169,216,148,54,256,75,94,153,45],
+						[173,62,140,150,64,105,175,169,216,148,34,56,85,234,53,145],
+						[73,162,40,50,84,150,135,129,166,248,134,256,185,234,53,155],
+					],
+					importantProject:[
+						[45,14,124,110],
+						[63,132,156,120],
+						[23,115,153,80],
+						[73,162,140,150],
+						[173,162,140,120],
+					],
+					workStatus:{
+						wk:0,
+						kg:181,
+						wg:78,
+					},
+					mapData:convertData(guangdongMap),
+					map:{
+						xq:112.56,
+						xd:65.59,
+						dw:64.35,
+						zf:56.44,
+						wc:58.56
+					}
+				},
+				{
+					investOrient:[
+						[34,23,35,15,67,85,63,35,23,42],
+						[14,53,45,47,43,53,78,22,84,92],
+						[56,85,46,64,68,75,78,12,12,32],
+						[43,64,53,87,96,32,12,72,44,52],
+						[78,11,31,57,64,75,78,22,24,92],
+					],
+					industryProject:[
+						[173,62,140,150,64,105,175,169,216,148,34,56,85,234,53,145],
+						[73,162,40,50,84,150,135,129,166,248,134,256,185,234,53,155],
+						[63,72,130,110,164,65,45,169,216,148,34,56,135,174,213,165],
+						[123,162,120,120,64,95,65,169,216,58,234,156,45,84,73,185],
+						[133,82,170,140,164,45,135,169,216,148,54,256,75,94,153,45],
+					],
+					importantProject:[
+						[73,162,140,150],
+						[173,162,140,120],
+						[45,14,124,110],
+						[63,132,156,120],
+						[23,115,153,80],
+					],
+					workStatus:{
+						wk:10,
+						kg:102,
+						wg:26,
+					},
+					mapData:convertData(guangdongMap),
+					map:{
+						xq:112.56,
+						xd:35.77,
+						dw:32.88,
+						zf:29.55,
+						wc:29.28
+					}
+				},
+				{
+					investOrient:[
+						[43,64,53,87,96,32,12,72,44,52],
+						[78,11,31,57,64,75,78,22,24,92],
+						[34,23,35,15,67,85,63,35,23,42],
+						[14,53,45,47,43,53,78,22,84,92],
+						[56,85,46,64,68,75,78,12,12,32],
+					],
+					industryProject:[
+						[123,162,120,120,64,95,65,169,216,58,234,156,45,84,73,185],
+						[133,82,170,140,164,45,135,169,216,148,54,256,75,94,153,45],
+						[173,62,140,150,64,105,175,169,216,148,34,56,85,234,53,145],
+						[73,162,40,50,84,150,135,129,166,248,134,256,185,234,53,155],
+						[63,72,130,110,164,65,45,169,216,148,34,56,135,174,213,165],
+					],
+					importantProject:[
+						[63,132,156,120],
+						[23,115,153,80],
+						[73,162,140,150],
+						[173,162,140,120],
+						[45,14,124,110],
+					],
+					workStatus:{
+						wk:0,
+						kg:264,
+						wg:199,
+					},
+					mapData:convertData(guangdongMap),
+					map:{
+						xq:89.74,
+						xd:44.87,
+						dw:43.18,
+						zf:41.11,
+						wc:41.7
+					}
+				},
+				{
+					investOrient:[
+						[14,53,45,47,43,53,78,22,84,92],
+						[56,85,46,64,68,75,78,12,12,32],
+						[43,64,53,87,96,32,12,72,44,52],
+						[78,11,31,57,64,75,78,22,24,92],
+						[34,23,35,15,67,85,63,35,23,42],
+					],
+					industryProject:[
+						[73,162,40,50,84,150,135,129,166,248,134,256,185,234,53,155],
+						[63,72,130,110,164,65,45,169,216,148,34,56,135,174,213,165],
+						[123,162,120,120,64,95,65,169,216,58,234,156,45,84,73,185],
+						[133,82,170,140,164,45,135,169,216,148,54,256,75,94,153,45],
+						[173,62,140,150,64,105,175,169,216,148,34,56,85,234,53,145],
+					],
+					importantProject:[
+						[173,162,140,120],
+						[45,14,124,110],
+						[63,132,156,120],
+						[23,115,153,80],
+						[73,162,140,150],
+					],
+					workStatus:{
+						wk:15,
+						kg:189,
+						wg:78,
+					},
+					mapData:convertData(guangdongMap),
+					map:{
+						xq:89.74,
+						xd:23.99,
+						dw:21.52,
+						zf:23.65,
+						wc:20.81
+					}
+				},
+			]
+			var huizhouData=[
+				{
+					investOrient:[
+						[12,21,11,16,14,19,13,12,19,12],
+						[14,20,14,17,13,13,18,12,14,12],
+						[18,14,16,14,18,15,18,12,22,12],
+						[16,12,13,17,16,15,19,12,18,12],
+						[17,15,11,17,14,15,18,14,14,16]
+					],
+					industryProject:[
+						[33,62,40,30,64,55,65,39,26,68,34,56,85,34,53,55],
+						[73,32,40,50,84,50,35,49,26,68,54,46,25,44,53,35],
+						[63,72,30,20,34,65,45,29,56,48,34,56,35,24,13,35],
+						[23,32,50,30,64,95,65,29,36,58,34,26,45,84,73,25],
+						[23,42,40,20,34,45,45,39,36,28,54,56,75,94,23,45]
+					],
+					importantProject:[
+						[13,22,30,40],
+						[23,32,30,40],
+						[45,14,34,30],
+						[63,22,36,40],
+						[23,15,13,80]
+					],
+					workStatus:{
+						wk:0,
+						kg:24,
+						wg:4,
+					},
+					mapData:convertData(huizhouMap),
+					map:{
+						xq:13.32,
+						xd:6.66,
+						dw:5.88,
+						zf:5.51,
+						wc:5.57
+					}
+				},
+				{
+					investOrient:[
+						[16,12,13,17,16,15,19,12,18,12],
+						[17,15,11,17,14,15,18,14,14,16],
+						[12,21,11,16,14,19,13,12,19,12],
+						[14,20,14,17,13,13,18,12,14,12],
+						[18,14,16,14,18,15,18,12,22,12],
+					],
+					industryProject:[
+						[23,32,50,30,64,95,65,29,36,58,34,26,45,84,73,25],
+						[23,42,40,20,34,45,45,39,36,28,54,56,75,94,23,45],
+						[33,62,40,30,64,55,65,39,26,68,34,56,85,34,53,55],
+						[73,32,40,50,84,50,35,49,26,68,54,46,25,44,53,35],
+						[63,72,30,20,34,65,45,29,56,48,34,56,35,24,13,35],
+					],
+					importantProject:[
+						[63,22,36,40],
+						[23,15,13,80],
+						[13,22,30,40],
+						[23,32,30,40],
+						[45,14,34,30],
+					],
+					workStatus:{
+						wk:0,
+						kg:24,
+						wg:4,
+					},
+					mapData:convertData(huizhouMap),
+					map:{
+						xq:13.32,
+						xd:5.66,
+						dw:4.88,
+						zf:4.51,
+						wc:4.57
+					}
+				},
+				{
+					investOrient:[
+						[14,20,14,17,13,13,18,12,14,12],
+						[18,14,16,14,18,15,18,12,22,12],
+						[16,12,13,17,16,15,19,12,18,12],
+						[17,15,11,17,14,15,18,14,14,16],
+						[12,21,11,16,14,19,13,12,19,12],
+					],
+					industryProject:[
+						[73,32,40,50,84,50,35,49,26,68,54,46,25,44,53,35],
+						[63,72,30,20,34,65,45,29,56,48,34,56,35,24,13,35],
+						[23,32,50,30,64,95,65,29,36,58,34,26,45,84,73,25],
+						[23,42,40,20,34,45,45,39,36,28,54,56,75,94,23,45],
+						[33,62,40,30,64,55,65,39,26,68,34,56,85,34,53,55],
+					],
+					importantProject:[
+						[23,32,30,40],
+						[45,14,34,30],
+						[63,22,36,40],
+						[23,15,13,80],
+						[13,22,30,40],
+					],
+					workStatus:{
+						wk:0,
+						kg:12,
+						wg:2,
+					},
+					mapData:convertData(huizhouMap),
+					map:{
+						xq:16.31,
+						xd:7.66,
+						dw:7.88,
+						zf:7.51,
+						wc:7.57
+					}
+				},
+				{
+					investOrient:[
+						[17,15,11,17,14,15,18,14,14,16],
+						[12,21,11,16,14,19,13,12,19,12],
+						[14,20,14,17,13,13,18,12,14,12],
+						[18,14,16,14,18,15,18,12,22,12],
+						[16,12,13,17,16,15,19,12,18,12],
+					],
+					industryProject:[
+						[23,42,40,20,34,45,45,39,36,28,54,56,75,94,23,45],
+						[33,62,40,30,64,55,65,39,26,68,34,56,85,34,53,55],
+						[73,32,40,50,84,50,35,49,26,68,54,46,25,44,53,35],
+						[63,72,30,20,34,65,45,29,56,48,34,56,35,24,13,35],
+						[23,32,50,30,64,95,65,29,36,58,34,26,45,84,73,25],
+					],
+					importantProject:[
+						[23,15,13,80],
+						[13,22,30,40],
+						[23,32,30,40],
+						[45,14,34,30],
+						[63,22,36,40],
+					],
+					workStatus:{
+						wk:0,
+						kg:16,
+						wg:4,
+					},
+					mapData:convertData(huizhouMap),
+					map:{
+						xq:16.31,
+						xd:8.66,
+						dw:8.88,
+						zf:8.51,
+						wc:8.57
+					}
+				},
+				{
+					investOrient:[
+						[18,14,16,14,18,15,18,12,22,12],
+						[16,12,13,17,16,15,19,12,18,12],
+						[17,15,11,17,14,15,18,14,14,16],
+						[12,21,11,16,14,19,13,12,19,12],
+						[14,20,14,17,13,13,18,12,14,12],
+					],
+					industryProject:[
+						[63,72,30,20,34,65,45,29,56,48,34,56,35,24,13,35],
+						[23,32,50,30,64,95,65,29,36,58,34,26,45,84,73,25],
+						[23,42,40,20,34,45,45,39,36,28,54,56,75,94,23,45],
+						[33,62,40,30,64,55,65,39,26,68,34,56,85,34,53,55],
+						[73,32,40,50,84,50,35,49,26,68,54,46,25,44,53,35],
+					],
+					importantProject:[
+						[45,14,34,30],
+						[63,22,36,40],
+						[23,15,13,80],
+						[13,22,30,40],
+						[23,32,30,40],
+					],
+					workStatus:{
+						wk:0,
+						kg:18,
+						wg:6,
+					},
+					mapData:convertData(huizhouMap),
+					map:{
+						xq:24.31,
+						xd:9.26,
+						dw:9.34,
+						zf:9.56,
+						wc:9.43
+					}
+				},
+				{
+					investOrient:[
+						[18,14,16,14,18,15,18,12,22,12],
+						[16,12,13,17,16,15,19,12,18,12],
+						[17,15,11,17,14,15,18,14,14,16],
+						[12,21,11,16,14,19,13,12,19,12],
+						[14,20,14,17,13,13,18,12,14,12],
+					],
+					industryProject:[
+						[63,72,30,20,34,65,45,29,56,48,34,56,35,24,13,35],
+						[23,32,50,30,64,95,65,29,36,58,34,26,45,84,73,25],
+						[23,42,40,20,34,45,45,39,36,28,54,56,75,94,23,45],
+						[33,62,40,30,64,55,65,39,26,68,34,56,85,34,53,55],
+						[73,32,40,50,84,50,35,49,26,68,54,46,25,44,53,35],
+					],
+					importantProject:[
+						[45,14,34,30],
+						[63,22,36,40],
+						[23,15,13,80],
+						[13,22,30,40],
+						[23,32,30,40],
+					],
+					workStatus:{
+						wk:0,
+						kg:18,
+						wg:6,
+					},
+					mapData:convertData(huizhouMap),
+					map:{
+						xq:24.31,
+						xd:11.26,
+						dw:10.34,
+						zf:10.56,
+						wc:10.43
+					}
+				},
+				{
+					investOrient:[
+						[12,21,11,16,14,19,13,12,19,12],
+						[14,20,14,17,13,13,18,12,14,12],
+						[18,14,16,14,18,15,18,12,22,12],
+						[16,12,13,17,16,15,19,12,18,12],
+						[17,15,11,17,14,15,18,14,14,16],
+					],
+					industryProject:[
+						[33,62,40,30,64,55,65,39,26,68,34,56,85,34,53,55],
+						[73,32,40,50,84,50,35,49,26,68,54,46,25,44,53,35],
+						[63,72,30,20,34,65,45,29,56,48,34,56,35,24,13,35],
+						[23,32,50,30,64,95,65,29,36,58,34,26,45,84,73,25],
+						[23,42,40,20,34,45,45,39,36,28,54,56,75,94,23,45],
+					],
+					importantProject:[
+						[13,22,30,40],
+						[23,32,30,40],
+						[45,14,34,30],
+						[63,22,36,40],
+						[23,15,13,80],
+					],
+					workStatus:{
+						wk:0,
+						kg:21,
+						wg:4,
+					},
+					mapData:convertData(huizhouMap),
+					map:{
+						xq:21.32,
+						xd:9.26,
+						dw:9.34,
+						zf:9.56,
+						wc:9.43
+					}
+				},
+				{
+					investOrient:[
+						[17,15,11,17,14,15,18,14,14,16],
+						[12,21,11,16,14,19,13,12,19,12],
+						[14,20,14,17,13,13,18,12,14,12],
+						[18,14,16,14,18,15,18,12,22,12],
+						[16,12,13,17,16,15,19,12,18,12],
+					],
+					industryProject:[
+						[23,42,40,20,34,45,45,39,36,28,54,56,75,94,23,45],
+						[33,62,40,30,64,55,65,39,26,68,34,56,85,34,53,55],
+						[73,32,40,50,84,50,35,49,26,68,54,46,25,44,53,35],
+						[63,72,30,20,34,65,45,29,56,48,34,56,35,24,13,35],
+						[23,32,50,30,64,95,65,29,36,58,34,26,45,84,73,25],
+					],
+					importantProject:[
+						[23,15,13,80],
+						[13,22,30,40],
+						[23,32,30,40],
+						[45,14,34,30],
+						[63,22,36,40],
+					],
+					workStatus:{
+						wk:0,
+						kg:13,
+						wg:6,
+					},
+					mapData:convertData(huizhouMap),
+					map:{
+						xq:21.32,
+						xd:10.66,
+						dw:10.42,
+						zf:10.51,
+						wc:10.77
+					}
+				},
+			]
+			var geoCoordMap,allData,area;
+			geoCoordMap=guangdongMap;
+			allData=guangdongData;
+      mapArea='guangdong';
+			var timeIndex=7;
+			var mapType=0,time;
+      tabData(0,0);//加载默认第一组数据
+      loadBaiDuMap(mapArea);//加载默认百度map
+      autoPlay();
+      //点击timeline事件
+			$('#timeline p').click(function(){
+				var index=$(this).index();
+				c
+				active(index)
+				tabData(index,mapType);
+      })
+      //自动轮播
+			function autoPlay(){
+				clearInterval(time);
+				time=setInterval(tab,5000);
+			}
+			function tab(){
+				timeIndex--
+				if(timeIndex<0){
+					timeIndex=7;
+				}
+				active(timeIndex);
+				tabData(timeIndex,mapType);
+			}
+			//数据切换
+			function tabData(index,type){
+				investOrient(allData[index].investOrient);
+				industryProjectStatus(allData[index].industryProject);
+				importantProjectStatus(allData[index].importantProject);
+				map(mapArea,allData[index].map,allData[index].mapData,type);
+				$('#wkg').text(allData[index].workStatus.wk)
+				$('#ykg').text(allData[index].workStatus.kg)
+				$('#ywg').text(allData[index].workStatus.wg)
+			};
+			//timeline切换交互
+			function active(index){
+				$('#timeline p').eq(index).addClass('active').siblings().removeClass('active');
+			}
+			//项目个数与总投资间的切换
+			$('#data-tab .item').click(function(){
+				var index=$(this).index();
+				mapType=index;
+				$(this).addClass('active').siblings().removeClass('active');
+				tabData(timeIndex,mapType);
+      })
+      //地图3d与卫星切换
+      $('.map-tab .item').click(function(){
+				var index=$(this).index();
+				if(index==0){
+          $('.bmap-wrap').css('z-index','-1');
+          $('.bmap-legend').hide();
+          $('.data-area').show();
+        }else{
+          loadBaiDuMap(mapArea);
+          $('.bmap-wrap').css('z-index','20')
+          $('.bmap-legend').show();
+          $('.data-area').hide();
+        }
+				$(this).addClass('active').siblings().removeClass('active');
+      })
+      //轮播暂停与开启
+			$('.sys-stop').click(function(){
+				var active=$(this).hasClass('active');
+				if(!active){
+					$(this).addClass('active');
+					clearInterval(time);
+				}else{
+					$(this).removeClass('active');
+					autoPlay();
+				}
+      })
+      //3d地图返回广东省地图
+      function mapBack(){
+        geoCoordMap=guangdongMap;
+        allData=guangdongData;
+        mapArea='guangdong';
+        $('#mapArea').text('广东省');
+        tabData(timeIndex,mapType);
+      }
+      //打开地区项目列表
+      function openProjectList(){
+        layer.open({
+          type: 2, 
+          title:'惠城区项目列表',
+          skin: 'layui-layer-blue',
+          maxmin:true,
+          move: false,
+          area: ['70%', '80%'],
+          content: 'projectList.html',
+          cancel:function(){
+            autoPlay();
+            $('.sys-stop').removeClass('active');
+          }
+        });
+      }
+	    //定义为全局变量进行判断避免图表dom重新加载
+	    var myInvestOption,myMapOption,myIndustryOption,myImportantOption;
+	    //按政府投资方向
+		function investOrient(data){
+			var dom=document.getElementById("echarts");
+			if(myInvestOption==''||myInvestOption==undefined){
+	    		myInvestOption=echarts.init(dom);
+	    	}
+	    	var max=100;
+	    	if(mapArea=='huizhou'){
+	    		max=50;
+	    	}
+			var option={
+				title:{
+					show:false,
+				},
+				tooltip : {
+			        trigger: 'item',
+			        textStyle:{
+			        	fontSize:18
+			        }
+			    },
+			    legend: {
+					itemGap: 20,
+					right: '5%',
+					top:'center',
+					orient:'vertical',
+					itemWidth:14,
+					icon:'circle',
+					show: true, 
+					data: ['资金需求','下达资金','到位资金','支付资金','完成资金'],
+                    textStyle:{
+                      color: ['#3596fd','#3fb17d','#68d3db','#f8c84c','#f58c48'],
+                    	fontWeight:'blod',
+                    },
+                    selected: {
+					    '资金需求': true,
+					    '下达资金': true,
+					    '到位资金': false,
+					    '支付资金': false,
+					    '完成资金': false,
+					}
+				},
+				radar: [
+					{
+						splitNumber: 4,
+						 name: {
+				            textStyle: {
+				                color: '#15faff',
+				                fontSize:12
+				           }
+				        },
+						indicator: [
+							{text: '三大战略', max: max},
+							{text: '年底预留投资', max: max},
+							{text: '中央本级建设等', max: max},
+							{text: '节能环保与生\n态建设', max: max},
+							{text: '社会事业和社\n会治理', max: max},	
+							{text: '自主创新和结构调整', max: max},
+							{text: '支持边疆、少数民族\n地区发展', max: max},
+							{text: '重大基础设施\n项目', max: max},
+							{text: '“三农”建设', max: max},
+							{text: '保障性安居工程和\n城镇基础设施', max:max}
+						],
+						center: ['40%','50%'],
+						radius: '50%',
+						/*axisLabel:{
+							show:true,
+							color:'#fff'
+						},*/
+						axisLine: {
+							lineStyle: {
+								color: '#7c7c7f'
+							}
+						},
+						splitArea : {
+				            show : false,
+				            areaStyle : {
+				                color: 'rgba(255,0,0)', // 图表背景的颜色
+				            },
+				        },
+						splitLine: {
+							lineStyle: {
+							color: '#7c7c7f'
+							}
+						}
+					},
+				],
+				animationEasing:'cubicInOut',
+				series: [
+					{
+						type: 'radar',
+						symbolSize: 4,
+						name: '资金需求',
+						itemStyle:{
+							normal: {
+								areaStyle: {
+									type: 'default',
+								}
+							}
+						},
+						data: [
+							{
+								value: data[0],
+								name: '资金需求'
+							}
+						]
+					},
+					{
+						type: 'radar',
+						symbolSize: 4,
+						name: '下达资金',
+						itemStyle:{
+							normal: {
+								areaStyle: {
+									type: 'default',
+								}
+							}
+						},
+						data:  [
+							{
+								value: data[1],
+								name: '下达资金'
+							}
+						],
+					},
+					{
+						type: 'radar',
+						symbolSize: 4,
+						name: '到位资金',
+						itemStyle:{
+							normal: {
+								areaStyle: {
+									type: 'default',
+								}
+							}
+						},
+						data:  [
+							{
+								value: data[2],
+								name: '到位资金'
+							}
+						],
+					},
+					{
+						type: 'radar',
+						symbolSize: 4,
+						name: '支付资金',
+						itemStyle:{
+							normal: {
+								areaStyle: {
+									type: 'default',
+								}
+							}
+						},
+						data:  [
+							{
+								value: data[3],
+								name: '支付资金'
+							}
+						],
+					},
+					{
+						type: 'radar',
+						symbolSize: 4,
+						name: '完成资金',
+						itemStyle:{
+							normal: {
+								areaStyle: {
+									type: 'default',
+								}
+							}
+						},
+						data:  [
+							{
+								value: data[4],
+								name: '完成资金'
+							}
+						],
+					}
+				],
+				color:['#3596fd','#3fb17d','#68d3db','#f8c84c','#f58c48'],
+			}
+			myInvestOption.setOption(option);
+		}
+		//按行业汇总统计
+		function industryProjectStatus(data){
+			var dom=document.getElementById("industry");
+			if(myIndustryOption==''||myIndustryOption==undefined){
+	    		myIndustryOption=echarts.init(dom);
+	    	}
+			var option={
+				title:{
+					show:false,
+					textStyle: {
+						color:'white',
+					}
+				},
+				legend: {
+					top:'20',
+					right:'10',
+					itemGap: 20,
+					itemWidth:14,
+					show: true, 
+					data: ['资金需求','下达资金','到位资金','支付资金','完成资金'],
+                    textStyle:{
+                      color: ['#3596fd','#3fb17d','#68d3db','#f8c84c','#f58c48'],
+                    	fontWeight:'blod',
+                    },
+                    selected: {
+					    '资金需求': true,
+					    '下达资金': true,
+					    '到位资金': false,
+					    '支付资金': false,
+					    '完成资金': true,
+					}
+				},
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'shadow'
+
+					},
+					textStyle:{
+			        	fontSize:18
+			        }
+				},
+				xAxis: {
+					type: 'category',
+					//boundaryGap: false,
+					axisTick: {
+						show: false
+					},
+					axisLabel: {
+					    interval:0,   
+				 		color: '#15faff',
+			         },
+					data:[{value:'高科技'},
+					{value:'信息化'},
+					{value:'环保'},
+					{value:'地质'},
+					{value:'医药'},
+					{value:'科学'},
+					{value:'公检法司'},
+					{value:'国防军工'},
+					{value:'工业'},
+					{value:'仓储物流'},
+					{value:'农林水利'},
+					{value:'交通运输'},
+					{value:'城市基础\n设施'},
+					{value:'社会事业'},
+					{value:'能源'},
+					{value:'其他'},
+					],
+				axisLine: {//显示坐标轴的线，并将其设置为白色
+            		show:true,
+            		lineStyle: {
+            			color:'#89e8ff'
+            		}
+                },
+                splitLine:{//消去y轴的分割线
+			　　　　show:false,
+					lineStyle: {
+	                	color:'#233c57'
+	                	}
+				　　},
+				},
+                yAxis: [
+                {
+                	type:'value',
+                	min:'0',
+					name:'单位：个',
+					splitNumber:4,
+                	nameTextStyle:{
+						color:'#fff'
+					},
+                	axisLabel: {
+                		color:'#fff',
+						
+                	},
+                	axisTick: {
+						show: false
+					},
+					position: 'left',
+                	axisLine: {//显示坐标轴的线，并将其设置为白色
+                		show:true,
+                		lineStyle: {
+                			color:'#89e8ff'
+                		}
+                	},
+                	splitLine:{//消去y轴的分割线
+					　　　　show:true,
+							lineStyle: {
+			                	color:'#878787',
+			                	type:'dashed'
+			                }
+					　　},
+                	}
+				
+                ],
+                grid:{
+			    	left:'40',
+			    	right:'10',
+                	bottom:'30'
+			    },
+                series: [
+					{
+	                   	type:'bar',
+	                   	name:'资金需求',
+	                    barCategoryGap:'50%',
+	                   	data:data[0],
+						itemStyle:{
+							normal:{
+								barBorderRadius: [15, 15, 0, 0],
+								label: {
+									show: false,
+								}
+							}
+						}
+				    },
+				    {
+	                   	type:'bar',
+	                   	name:'下达资金',
+	                   	data:data[1],
+						itemStyle:{
+							normal:{
+								barBorderRadius: [15, 15, 0, 0],
+								label: {
+									show: false,
+								}
+							}
+						}
+				    },
+				    {
+	                   	type:'bar',
+	                   	name:'到位资金',
+	                   	data:data[2],
+						itemStyle:{
+							normal:{
+								barBorderRadius: [15, 15, 0, 0],
+								label: {
+									show: false,
+								}
+							}
+						}
+				    },{
+	                   	type:'bar',
+	                   	name:'支付资金',
+	                   	data:data[3],
+						itemStyle:{
+							normal:{
+								barBorderRadius: [15, 15, 0, 0],
+								label: {
+									show: false,
+								}
+							}
+						}
+				    },
+				    {
+	                   	type:'bar',
+	                   	name:'完成资金',
+	                   	data:data[4],
+						itemStyle:{
+							normal:{
+								barBorderRadius: [15, 15, 0, 0],
+								label: {
+									show: false,
+								}
+							}
+						}
+				    }
+                ],
+                color:['#3596fd','#3fb17d','#68d3db','#f8c84c','#f58c48'],
+			}
+        	myIndustryOption.setOption(option);
+		}
+		//按行业汇总统计
+		function importantProjectStatus(data){
+			var dom=document.getElementById("important");
+			if(myImportantOption==''||myImportantOption==undefined){
+	    		myImportantOption=echarts.init(dom);
+	    	}
+			var option={
+				title:{
+					show:false,
+					textStyle: {
+						color:'white',
+					}
+				},
+				legend: {
+					top:'20',
+					right:'10',
+					itemGap: 20,
+					itemWidth:14,
+					show: true, 
+					data: ['资金需求','下达资金','到位资金','支付资金','完成资金'],
+          textStyle:{
+            color: ['#3596fd','#3fb17d','#68d3db','#f8c84c','#f58c48'],
+            fontWeight:'blod',
+          },
+          selected: {
+            '资金需求': true,
+            '下达资金': true,
+            '到位资金': false,
+            '支付资金': false,
+            '完成资金': false,
+					}
+				},
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'shadow'
+					},
+					textStyle:{
+			      fontSize:18
+			    }
+				},
+				xAxis: {
+					type: 'category',
+					//boundaryGap: false,
+					axisTick: {
+						show: false
+					},
+					axisLabel: {
+					  interval:0,   
+				 		color: '#15faff',
+			    },
+					data:[
+						{value:'一核一带一区 '},
+						{value:'粤港澳大湾区 '},
+						{value:'一带一路'},
+						{value:' 其他'},
+					],
+				  axisLine: {//显示坐标轴的线，并将其设置为白色
+            show:true,
+            lineStyle: {
+            	color:'#89e8ff'
+            }
+          },
+          splitLine:{//消去y轴的分割线
+			　　　　show:false,
+					    lineStyle: {
+	              color:'#233c57'
+	            }
+				　  },
+				  },
+          yAxis: [
+            {
+              type:'value',
+            	min:'0',
+              name:'单位：个',
+              splitNumber:4,
+              nameTextStyle:{
+                color:'#fff'
+              },
+              axisLabel: {
+                color:'#fff',
+              },
+              axisTick: {
+						    show: false
+					    },
+					    position: 'left',
+              axisLine: {
+                show:true,
+                lineStyle: {
+                  color:'#89e8ff'
+                }
+              },
+              splitLine:{
+      　　　　   show:true,
+							  lineStyle: {
+                  color:'#878787',
+                  type:'dashed'
+                }
+					　　},
+            }
+          ],
+          grid:{
+			    	left:'40',
+			    	right:'10',
+            bottom:'30',
+            top:'75'
+			    },
+          series: [
+					  {
+              type: "pictorialBar",
+              name:'资金需求',
+              symbol: "path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z",
+              barGap:'20%',
+              barCategoryGap:'50%',
+              data:data[0],
+						  itemStyle:{
+							  normal:{
+								  barBorderRadius: [15, 15, 0, 0],
+								  label: {
+									  show: false,
+								  }
+							  }
+						  }
+				    },
+				    {
+              type: "pictorialBar",
+              symbol: "path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z",
+              barGap:'20%',
+              name:'下达资金',
+              data:data[1],
+					  	itemStyle:{
+							  normal:{
+								  barBorderRadius: [15, 15, 0, 0],
+								  label: {
+									  show: false,
+								  }
+							  }
+						  }
+				    },
+				    {
+              type: "pictorialBar",
+              symbol: "path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z",
+              barGap:'20%',
+              name:'到位资金',
+              data:data[2],
+						  itemStyle:{
+							  normal:{
+								  barBorderRadius: [15, 15, 0, 0],
+								  label: {
+									  show: false,
+								  }
+							  }
+						  }
+            },
+            {
+              type: "pictorialBar",
+              symbol: "path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z",
+              barGap:'20%',
+              name:'支付资金',
+              data:data[3],
+						  itemStyle:{
+							  normal:{
+								  barBorderRadius: [15, 15, 0, 0],
+								  label: {
+									  show: false,
+								  }
+							  }
+						  }
+				    },
+				    {
+              type: "pictorialBar",
+              symbol: "path://M0,10 L10,10 C5.5,10 5.5,5 5,0 C4.5,5 4.5,10 0,10 z",
+              barGap:'20%',
+              name:'完成资金',
+              data:data[4],
+						  itemStyle:{
+							  normal:{
+								  barBorderRadius: [15, 15, 0, 0],
+								  label: {
+									  show: false,
+								  }
+							  }
+						  }
+				    }
+          ],
+           color:['#3596fd','#3fb17d','#68d3db','#f8c84c','#f58c48'],
+			  }
+        	myImportantOption.setOption(option);
+        	myImportantOption.on("click", function (params){
+        		
+		    });
+			
+	}
+   // 地图投资数据展示
+		function graphic(data){
+		    	return [
+                    {
+                      type: 'group',
+                      right: '5%',
+                      top: '14%',
+                      children: [
+                          {
+                              type: 'text',
+                              z: 100,
+                              left: 0,
+                              top: 0,
+                              style: {
+                                  fill: '#fff',
+                                  text: [
+                                      '资金需求（亿元）'
+                                  ],
+                                  font: '0.7291667vw Microsoft YaHei'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 101,
+                              left: 0,
+                              top: fontSize(0.3),
+                              style: {
+                                  fill: '#3596fd',
+                                  text: data.xq,
+                                  fontSize: fontSize(0.38),
+                                  fontFamily: 'zongyi',
+                                  fontWeight: 'bold'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 102,
+                              left: 0,
+                              top: fontSize(1),
+                              style: {
+                                  fill: '#fff',
+                                  text: [
+                                      '下达资金（亿元）'
+                                  ],
+                                  font: '0.7291667vw Microsoft YaHei'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 103,
+                              left: 0,
+                              top: fontSize(1.3),
+                              style: {
+                                  fill: '#3fb17d',
+                                  text: data.xd,
+                                  fontSize: fontSize(0.38),
+                                  fontFamily: 'zongyi',
+                                  fontWeight: 'bold'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 104,
+                              left: 0,
+                              top:fontSize(2),
+                              style: {
+                                  fill: '#fff',
+                                  text: [
+                                      '到位资金（亿元）'
+                                  ],
+                                  font: '0.7291667vw Microsoft YaHei'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 105,
+                              left: 0,
+                              top:fontSize(2.3),
+                              style: {
+                                  fill: '#68d3db',
+                                  text: data.dw,
+                                  fontSize: fontSize(0.38),
+                                  fontFamily: 'zongyi',
+                                  fontWeight: 'bold'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 106,
+                              left: 0,
+                              top: fontSize(3),
+                              style: {
+                                  fill: '#fff',
+                                  text: [
+                                      '支付资金（亿元）'
+                                  ],
+                                  font: '0.7291667vw Microsoft YaHei'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 107,
+                              left: 0,
+                              top: fontSize(3.3),
+                              style: {
+                                  fill: '#f8c84c',
+                                  text: data.zf,
+                                  fontSize: fontSize(0.38),
+                                  fontFamily: 'zongyi',
+                                  fontWeight: 'bold'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 106,
+                              left: 0,
+                              top: fontSize(4),
+                              style: {
+                                  fill: '#fff',
+                                  text: [
+                                      '完成资金（亿元）'
+                                  ],
+                                  font: '0.7291667vw Microsoft YaHei'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 107,
+                              left: 0,
+                              top: fontSize(4.3),
+                              style: {
+                                  fill: '#f58c48',
+                                  text: data.wc,
+                                  fontSize: fontSize(0.38),
+                                  fontFamily: 'zongyi',
+                                  fontWeight: 'bold'
+                              }
+                          },
+
+                      ]
+                  }
+              ]
+		    }
+		function map(area,data,mapData,type){
+			if(myMapOption==''||myMapOption==undefined){
+	    		myMapOption= echarts.init(document.getElementById('map'));
+	    	}		    
+		    var max=100;
+		    if(type==1){
+          max=1000
+          for(var i=0;i<mapData.length;i++){
+            mapData[i].value[2]=mapData[i].invest;
+          }
+		    }
+			  var option={
+		    	title:{
+		    		show:false
+		    	},
+		    	tooltip : {
+            trigger: 'item',
+            textStyle:{
+              fontSize:fontSize(.18)
+            }
+			    },
+			    visualMap: {
+            min: 0,
+            max: max,
+            right:'25%',
+            seriesIndex:0,
+            //text: ['高', '低'], // 文本，默认为数值文本
+            calculable: true,
+            color:['#f23501','#fdc003','#1f58cf','#2c4583'],
+            textStyle:{
+              color:'#fff'
+            }
+			    },
+			    graphic:graphic(data),
+				  geo: [
+					  {
+              map: area,
+              roam: true,
+              zoom: 1,
+              layoutCenter:['50%','50%'],
+              layoutSize:'90%',
+              z:100,
+              label: {
+                show: true,
+                color:'#fff',
+                fontSize:'0.7291667vw'
+              },
+              roam: false,
+              itemStyle: {
+                  normal: {
+                    borderColor: '#ffffff',
+                    borderWidth:2,
+                  },
+				        }
+			        },
+			        {
+                map: area,
+				        layoutCenter:['50.5%','50.5%'],
+				        layoutSize:'90%',
+				        z:4,
+				        label: {
+                  emphasis: {
+                      show: false
+                  }
+				        },
+				        roam: false,
+				        itemStyle: {
+                  normal: {
+                    areaColor: '#34519f',
+                    borderColor: '#1f61cf',
+                    borderWidth:2,
+                  }
+				        }
+			        },
+			        {
+                map: area,
+				        layoutCenter:['51%','51%'],
+				        layoutSize:'90%',
+				        z:3,
+				        label: {
+                  emphasis: {
+                    show: false
+                  }
+				        },
+				        roam: false,
+				        itemStyle: {
+                  normal: {
+                    areaColor: '#34519f',
+                    borderColor: '#1f61cf',
+                    shadowColor:'#0e30bd',
+                    borderWidth:2,
+                    shadowOffsetX:'5',
+                    shadowOffsetY:'5',
+                    shadowBlur:10,
+                  }
+				        }
+			        }
+            ],
+            series: [
+              {
+                center: "center",
+                data: mapData,
+                geoIndex:0,
+                type: "map",
+                tooltip : {
+                  trigger: 'item',
+                  formatter:function(data){
+                    if(type==0){
+                      return data.name +'<br>项目个数：'+ data.data.value[2]+'个<br>投资额：'+data.data.invest+'亿元';
+                    }else{
+                      return data.name +'<br>总投资：'+ data.data.invest+'亿元';
+                    }
+                    
+                  }
+                },
+              },         
+		    		]
+		    	}
+          myMapOption.setOption(option,true);
+          myMapOption.off('dblclick');
+          myMapOption.off('click');
+				  myMapOption.on("mouseover", function (params){
+            myMapOption.dispatchAction({
+              type: 'downplay'
+            })
+          });
+          if(area=='huizhou'){
+            myMapOption.on("click", function (params){
+              clearInterval(time);
+              openProjectList();
+              $('.sys-stop').addClass('active')
+          });
+          }
+				  myMapOption.on("dblclick", function (params){
+            if(params.name=='惠州市'){
+              clearInterval(time);
+              geoCoordMap=huizhouMap;
+              allData=huizhouData;
+              mapArea='huizhou';
+              $('#mapArea').text('惠州市');
+              tabData(timeIndex,mapType);
+              if(!$('.sys-stop').hasClass('active')){
+                autoPlay();
+              }
+            }
+          });
+      }
+      function loadBaiDuMap(area){
+        var mapCenter=[
+          {
+            name:'guangdong',
+            center:[113.291095,23.154976],
+            zoom:8
+          },
+          {
+            name:'huizhou',
+            center:[114.427128,23.120946],
+            zoom:11
+          }
+        ]
+        var map = new BMap.Map('bmap',{mapType:BMAP_HYBRID_MAP});
+        map.enableScrollWheelZoom(true); //启用滚轮放大缩小
+        for(var i=0;i< mapCenter.length;i++){
+          if(area==mapCenter[i].name){
+            map.centerAndZoom(new BMap.Point(mapCenter[i].center[0],mapCenter[i].center[1]),mapCenter[i].zoom);
+          }
+        }
+        //map.centerAndZoom(new BMap.Point(obj1, obj2), obj3);//地图中心点
+        //map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_SATELLITE_MAP ]}));//BMAP_HYBRID_MAP 右上角显示
+        map.setMaxZoom(12.5);//设置地图缩放最大级别
+        map.setMinZoom(6);//设置地图缩放最小级别
+        var b = new BMap.Bounds(new BMap.Point(108.97233,23.137962),new BMap.Point(118.0238,23.137962));
+          try {	
+            BMapLib.AreaRestriction.setBounds(map, b);
+          } catch (e) {
+            alert(e);
+          }//设定拖动区域
+        var provinces=['云南','湖南','江西','福建','台湾','海南','广西','贵州','浙江']
+        for(var i=0;i<provinces.length;i++){
+          getBoundary(provinces[i]);
+        }
+        function getBoundary(area){
+          var bdary = new BMap.Boundary();
+          bdary.get(area, function(rs){
+                //获取行政区域   
+              //map.clearOverlays();      //清除地图覆盖物       
+              var count = rs.boundaries.length; //行政区域的点有多少个
+              if (count === 0) {
+                  alert('未能获取当前输入行政区域');
+                  return ;
+              }
+              var pointArray = [];
+              for (var i = 0; i < count; i++) {
+                  var ply = new BMap.Polygon(rs.boundaries[i], { strokeWeight : 3,
+                  strokeOpacity : 0,
+                  strokeColor: 'rgb(0,0,0,0)', 
+                  fillColor:'rgba(0,0,0,0.9)'
+                }); //建立多边形覆盖物
+                  map.addOverlay(ply);  //添加覆盖物
+              }          
+          });
+        }
+        //添加地图标记点 
+        var point=new BMap.Point(113.916603,23.56265);
+        var markData={
+          mname:'测试项目一',
+          mbuild:'广东省广州市',
+          minvestment:'13123',
+          mmain:'111111111111111111'
+        }
+        addMarker(point,markData)
+        function addMarker(point,value){
+          var sContent =
+	    		"<h3 style='text-align:center;'>"+value.mname+"</h3><span>建设详细地点："+value.mbuild+"</span> </br>"+
+	    		"<span>总投资："+value.minvestment+" 亿元</span> </br>"+
+	    		"<span>建设内容："+value.mmain+"</span>"
+          var myIcon =new BMap.Icon('images/mark-01.png', new BMap.Size(40,58));
+          var opts = {
+            position : point,    // 指定文本标注所在的地理位置
+            offset   : new BMap.Size(10, -35)    //设置文本偏移量
+          }
+          var marker = new BMap.Marker(point,{icon:myIcon});
+          var infoWindows = new BMap.InfoWindow(sContent,opts);
+          map.addOverlay(marker);
+          addClickHandler(sContent,marker);
+            //图片加载完毕重绘infowindow
+            /*document.getElementById('imgDemo').onload = function (){
+              infoWindow.redraw();   //防止在网速较慢，图片未加载时，生成的信息框高度比图片的总高度小，导致图片部分被隐藏
+            } */
+            var opts = {
+              width : 250,     // 信息窗口宽度
+              height: 80,     // 信息窗口高度
+              title : "信息窗口" , // 信息窗口标题
+              enableMessage:true//设置允许信息窗发送短息
+			      };
+          function openInfo(content,e){
+            var p = e.target;
+            var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+            var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+            map.openInfoWindow(infoWindow,point); //开启信息窗口
+          }
+          function addClickHandler(content,marker){
+            marker.addEventListener("click",function(e){
+              openInfo(content,e)}
+            );
+          }
+        } 
+      }
+	</script>
+</body>
+</html>

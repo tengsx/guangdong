@@ -1,0 +1,110 @@
+@charset "utf-8"; 
+a{
+  color: inherit;
+}
+a:hover{
+  text-decoration: none;
+}
+html{
+	height: 100%;
+}
+body{
+	height: 100%;
+	background-image: url(../images/index-bg.png);
+	background-size: 100%;
+}
+.navbox-wrap{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 11.9791667vw;
+	padding: 20px;
+	width: 60%;
+}
+.fir-nav ul{
+	width: 35vw;
+	margin:0 auto;
+	height:4.16666667vw;
+}
+.fir-nav ul li{
+	float: left;
+	width: 14.583333vw;
+	line-height:4.16666667vw;
+	background-image: url(../images/fir-nav-bg.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	text-align: center;
+	color: #91c8ff;
+	font-size: 1.4583333vw;
+	font-weight: bold;
+}
+.fir-nav ul li:first-of-type{
+	margin-right: 5vw;
+}
+.fir-nav ul li.active{
+	background-image: url(../images/fir-nav-act.png);
+	color: #2ffbfc;
+}
+.nav-wrap{
+	width: 100%;
+}
+.sec-nav{
+  display: none;
+	width: 20.833333vw;
+	position: relative;
+	margin-left: 6.25vw;
+}
+.sec-nav>ul>li{
+	margin-top: 1vw;
+	line-height: 2.34375vw;
+	color: #e9f3f4;
+	padding-left: 3vw;
+	font-size: 0.9375vw;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: row;
+	box-shadow: inset 1px 1px 15px rgba(21,250,255,.3); 
+	background-image: url(../images/sec-nav.png);
+	background-repeat: no-repeat;
+	background-position: 1vw center;
+}
+.sec-nav>ul>li.active{
+	border: 1px solid #108aad;
+	background-image: url(../images/sec-nav-act.png);
+	color: #2ffbfc;
+}
+.thr-nav{
+  display: none;
+	position: absolute;
+	left: 24.833333vw;
+	top: 0;
+	width: 22.3958vw;
+	/* height: 22.3958vw; */
+	border: 2px solid #108aad;
+	padding: 20px;
+	box-sizing: border-box;
+}
+.thr-nav ul li{
+	line-height: 3.125vw;
+	color: #e9f3f4;
+	font-size: 0.9375vw;
+	box-sizing: border-box;
+	border-bottom: 1px solid #075178;
+	position: relative;
+}
+.thr-nav ul li span{
+	display: inline-block;
+	width:5px;
+	height: 5px;
+	border-radius: 50%;
+	background: #e9f3f4;
+	margin-right: 1vw;
+}
+.thr-nav ul li.active{
+	color: #2ffbfc;
+}
+.thr-nav ul li.active span{
+	background: #2ffbfc;
+	
+}

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>广东省投资项目管理服务平台</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/t.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/carousel.js"></script>
+</head>
+<body class="systemPandect">
+	<div class="container">
+		<div class="header">
+			<div class="sys sys-tab">
+				<span>当前系统 </span>
+				<select name="" id="select-molde" onchange="chooseModlue(this)">
+					 <option value="0" selected>项目总览</option>
+					<option value="1">中央预算内投资项目展示</option>
+					<option value="2">重点项目计划展示</option>
+					<option value="3">在线审批平台项目展示</option>
+					<option value="4">政府投资项目展示</option>
+				</select>
+			</div>
+      <div class="sys sys-time"><span id="time"></span></div>
+      <div class="sys sys-back" onclick="backTo()"><img src="images/home.png" alt=""><span>主页</span></div>
+		</div>
+		<div class="content">
+			<ul class="item-card">
+				<li>
+					<p class="title">在线审批平台</p>
+					<p class="centre">
+						<span class="enhance">项目总数</span>
+						<span class="decline">投资额</span>
+					</p>
+					<p class="below">
+						<span>68514</span> 个
+						<span>113,290.85</span> 亿元
+					</p>
+				</li>
+				<li class="carousel-active"> <!--当前选中-->
+				<p class="title">重点项目计划库</p>
+					<p class="centre">
+						<span class="enhance">项目总数</span>
+						<span class="decline">投资额</span>
+					</p>
+					<p class="below">
+						<span>1170</span> 个
+						<span>59,309.84</span> 亿元
+					</p>
+				</li>
+				<li>
+					<p class="title">中央预算内计划库</p>
+					<p class="centre">
+						<span class="enhance">项目总数</span>
+						<span class="decline">投资额</span>
+					</p>
+					<p class="below">
+						<span>75</span> 个
+						<span>497.63</span> 亿元
+					</p>
+				</li>
+				<li class="item-br">
+					<p class="title">政府投资计划库</p>
+					<p class="centre">
+						<span class="enhance">项目总数</span>
+						<span class="decline">投资额</span>
+					</p>
+					<p class="below">
+						<span>-</span> 个
+						<span>-</span> 亿元
+					</p>
+				</li>
+				<li>
+					<p class="title">PPP库</p>
+					<p class="centre">
+						<span class="enhance">项目总数</span>
+						<span class="decline">投资额</span>
+					</p>
+					<p class="below">
+						<span>609</span> 个
+						<span>58,408.25</span> 亿元
+					</p>
+				</li>
+				<li>
+					<p class="title">补短板项目库</p>
+					<p class="centre">
+						<span class="enhance">项目总数</span>
+						<span class="decline">投资额</span>
+					</p>
+					<p class="below">
+						<span>637</span> 个
+						<span>30,774.35</span> 亿元
+					</p>
+				</li>
+				<li>
+					<p class="title">粤港澳大湾区项目库</p>
+					<p class="centre">
+						<span class="enhance">项目总数</span>
+						<span class="decline">投资额</span>
+					</p>
+					<p class="below">
+						<span>50539</span> 个
+						<span>117,956</span> 亿元
+					</p>
+				</li>
+				<li>
+					<p class="title">民间资本推介库</p>
+					<p class="centre">
+						<span class="enhance">项目总数</span>
+						<span class="decline">投资额</span>
+					</p>
+					<p class="below">
+						<span>170</span> 个
+						<span>1,263.54</span> 亿元
+					</p>
+				</li>
+				<li>
+					<p class="title">一核一带一区项目库</p>
+					<p class="centre">
+						<span class="enhance">项目总数</span>
+						<span class="decline">投资额</span>
+					</p>
+					<p class="below">
+						<span>73988</span> 个
+						<span>152,615.26</span> 亿元
+					</p>
+				</li>
+			</ul>
+				
+				
+			<!--轮播图-->	
+			<div id="carousel" class="item-carousel">	
+				<div class="carousel">
+					<div class="car-main">
+						<div class="car-title">在线审批平台</div>
+						<div class="car-top">
+							<div>
+								<img src="images/systemPandect/icon.png"/>
+								<div class="car-topC numL">
+									<p>1153</p>
+									<p>总项目数(个)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+3.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon2.png"/>
+								<div class="car-topC numC">
+									<p>1153</p>
+									<p>总投资额(亿元)</p>
+								</div>
+								<div class="car-topR down">
+									同比下降<br> 
+									-1.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon3.png"/>
+								<div class="car-topC numR">
+									<p>1153</p>
+									<p>完成投资额(亿元)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+2.5%
+								</div>
+							</div>
+						</div>
+						<div class="car-bottom">
+							<div>
+								<img src="images/systemPandect/demo/demo5.png" style="width: 31.09374vw; height: 17.34375vw;"/>
+							</div>
+							<div>
+								<img src="images/systemPandect/demo/demo6.png" style="width: 21.71875vw; height: 16.92708vw;"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel">
+					<div class="car-main">
+						<div class="car-title">重点项目计划库</div>
+						<div class="car-top">
+							<div>
+								<img src="images/systemPandect/icon.png"/>
+								<div class="car-topC numL">
+									<p>1153</p>
+									<p>总项目数(个)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+3.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon2.png"/>
+								<div class="car-topC numC">
+									<p>1153</p>
+									<p>总投资额(亿元)</p>
+								</div>
+								<div class="car-topR down">
+									同比下降<br> 
+									-1.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon3.png"/>
+								<div class="car-topC numR">
+									<p>1153</p>
+									<p>完成投资额(亿元)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+2.5%
+								</div>
+							</div>
+						</div>
+						<div class="car-bottom">
+							<div>
+								<img src="images/systemPandect/demo/demo3.png" style="width: 23.90625vw; height: 17.03125vw;"/>
+							</div>
+							<div>
+								<img src="images/systemPandect/demo/demo4.png" style="width: 26.19791vw; height: 14.79166vw;"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel">
+					<div class="car-main">
+						<div class="car-title">中央预算内计划库</div>
+						<div class="car-top">
+							<div>
+								<img src="images/systemPandect/icon.png"/>
+								<div class="car-topC numL">
+									<p>1153</p>
+									<p>总项目数(个)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+3.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon2.png"/>
+								<div class="car-topC numC">
+									<p>1153</p>
+									<p>总投资额(亿元)</p>
+								</div>
+								<div class="car-topR down">
+									同比下降<br> 
+									-1.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon3.png"/>
+								<div class="car-topC numR">
+									<p>1153</p>
+									<p>完成投资额(亿元)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+2.5%
+								</div>
+							</div>
+						</div>
+						<div class="car-top car-two">
+							<div>
+								<img src="images/systemPandect/icon4.png"/>
+								<div class="car-topC numL">
+									<p>1153</p>
+									<p>已下达项目数(个)</p>
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon5.png"/>
+								<div class="car-topC numC">
+									<p>1153</p>
+									<p>已下达投资额(亿元)</p>
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon6.png"/>
+								<div class="car-topC numR">
+									<p>1153</p>
+									<p>本次下达投资额(亿元)</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel">
+					<div class="car-main">
+						<div class="car-title">政府投资计划库</div>
+						
+					</div>
+				</div>
+				<div class="carousel">
+					<div class="car-main">
+						<div class="car-title">PPP库</div>
+						<div class="car-top">
+							<div>
+								<img src="images/systemPandect/icon.png"/>
+								<div class="car-topC numL">
+									<p>1153</p>
+									<p>总项目数(个)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+3.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon2.png"/>
+								<div class="car-topC numC">
+									<p>1153</p>
+									<p>总投资额(亿元)</p>
+								</div>
+								<div class="car-topR down">
+									同比下降<br> 
+									-1.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon3.png"/>
+								<div class="car-topC numR">
+									<p>1153</p>
+									<p>完成投资额(亿元)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+2.5%
+								</div>
+							</div>
+						</div>
+						<div class="car-bottom">
+							<div>
+								<img src="images/systemPandect/demo/demo7.png" style="width: 27.29166vw; height: 13.33333vw;"/>
+							</div>
+							<div>
+								<img src="images/systemPandect/demo/demo8.png" style="width: 22.86458vw; height: 17.44791vw;"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel">
+					<div class="car-main">
+						<div class="car-title">补短板项目库</div>
+						<div class="car-top">
+							<div>
+								<img src="images/systemPandect/icon.png"/>
+								<div class="car-topC numL">
+									<p>1153</p>
+									<p>总项目数(个)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+3.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon2.png"/>
+								<div class="car-topC numC">
+									<p>1153</p>
+									<p>总投资额(亿元)</p>
+								</div>
+								<div class="car-topR down">
+									同比下降<br> 
+									-1.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon3.png"/>
+								<div class="car-topC numR">
+									<p>1153</p>
+									<p>完成投资额(亿元)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+2.5%
+								</div>
+							</div>
+						</div>
+						<div class="car-bottom">
+							<div>
+								<img src="images/systemPandect/demo/demo9.png" style="width: 26.51041vw; height: 17.65625vw;"/>
+							</div>
+							<div>
+								<img src="images/systemPandect/demo/demo10.png" style="width: 23.48958vw; height: 17.60416vw;"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel">
+					<div class="car-main">
+						<div class="car-title">粤港澳大湾区项目库</div>
+						<div class="car-top">
+							<div>
+								<img src="images/systemPandect/icon.png"/>
+								<div class="car-topC numL">
+									<p>1153</p>
+									<p>总项目数(个)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+3.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon2.png"/>
+								<div class="car-topC numC">
+									<p>1153</p>
+									<p>总投资额(亿元)</p>
+								</div>
+								<div class="car-topR down">
+									同比下降<br> 
+									-1.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon3.png"/>
+								<div class="car-topC numR">
+									<p>1153</p>
+									<p>完成投资额(亿元)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+2.5%
+								</div>
+							</div>
+						</div>
+						<div class="car-bottom">
+							<div>
+								<img src="images/systemPandect/demo/demo1.png" style="width: 21.35416vw; height: 16.5625vw;"/>
+							</div>
+							<div>
+								<img src="images/systemPandect/demo/demo2.png" style="width: 26.97916vw; height: 16.40625vw;"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel">
+					<div class="car-main">
+						<div class="car-title">民间资本推介库</div>
+						<div class="car-top">
+							<div>
+								<img src="images/systemPandect/icon.png"/>
+								<div class="car-topC numL">
+									<p>1153</p>
+									<p>总项目数(个)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+3.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon2.png"/>
+								<div class="car-topC numC">
+									<p>1153</p>
+									<p>总投资额(亿元)</p>
+								</div>
+								<div class="car-topR down">
+									同比下降<br> 
+									-1.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon3.png"/>
+								<div class="car-topC numR">
+									<p>1153</p>
+									<p>完成投资额(亿元)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+2.5%
+								</div>
+							</div>
+						</div>
+						<div class="car-bottom">
+							<div>
+								<img src="images/systemPandect/demo/demo11.png" style="width: 21.66666vw; height: 17.65625vw;"/>
+							</div>
+							<div>
+								<img src="images/systemPandect/demo/demo12.png" style="width: 29.01041vw; height: 17.76041vw;"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel">
+					<div class="car-main">
+						<div class="car-title">一核一带一区项目库</div>
+						<div class="car-top">
+							<div>
+								<img src="images/systemPandect/icon.png"/>
+								<div class="car-topC numL">
+									<p>1153</p>
+									<p>总项目数(个)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+3.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon2.png"/>
+								<div class="car-topC numC">
+									<p>1153</p>
+									<p>总投资额(亿元)</p>
+								</div>
+								<div class="car-topR down">
+									同比下降<br> 
+									-1.2%
+								</div>
+							</div>
+							<div>
+								<img src="images/systemPandect/icon3.png"/>
+								<div class="car-topC numR">
+									<p>1153</p>
+									<p>完成投资额(亿元)</p>
+								</div>
+								<div class="car-topR up">
+									同比增长<br> 
+									+2.5%
+								</div>
+							</div>
+						</div>
+						<div class="car-bottom">
+							<div>
+								<img src="images/systemPandect/demo/demo13.png" style="width: 27.23958vw; height: 17.60416vw;"/>
+							</div>
+							<div>
+								<img src="images/systemPandect/demo/demo14.png" style="width: 23.17708vw; height: 17.65625vw;"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="js/common.js"></script>
+<script>
+    $(function () {
+       $("#carousel").carousel();
+    });
+    
+   var cardLis = $(".item-card>li");
+    cardLis.click(function(){
+        cardLis.removeClass("carousel-active");
+        $(this).addClass("carousel-active");
+    })
+    function curCardLis(index){
+        cardLis.removeClass("carousel-active");
+        cardLis.eq(index).addClass("carousel-active");
+    }
+    
+  </script>
+
+</body></html>	

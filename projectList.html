@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jquery.js"></script>
+  <title></title>
+</head>
+<body>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <th class="num">序号</th>
+        <th>项目名称</th>
+        <th>总投资（万元）</th>
+        <th>建设地点</th>
+        <th>所属行业</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>
+            <div class="td-project-name" onclick="openProjectFile()">韶关市乳源瑶族自治县南水水库供水工程</div>
+          </td>
+          <td>8,239.00</td>
+          <td>韶关市</td>
+          <td>农业</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>
+            <div class="td-project-name" onclick="openProjectFile()">惠州亿纬锂能源产业园</div>
+          </td>
+          <td>4539.00</td>
+          <td>惠州市</td>
+          <td>城建</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>
+            <div class="td-project-name" onclick="openProjectFile()">广州市粤芯12英寸集成电路生产项目</div>
+          </td>
+          <td>21342.00</td>
+          <td>广州市</td>
+          <td>电子</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>
+            <div class="td-project-name" onclick="openProjectFile()">广州市美华航空电子研发建设项目</div>
+          </td>
+          <td>44976.00</td>
+          <td>广州市</td>
+          <td>交通</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>
+            <div class="td-project-name" onclick="openProjectFile()">欣旺达惠州新能源项目</div>
+          </td>
+          <td>44976.00</td>
+          <td>惠州市</td>
+          <td>城建</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>
+            <div class="td-project-name" onclick="openProjectFile()">测试项一</div>
+          </td>
+          <td>3616.00</td>
+          <td>梅州市</td>
+          <td>交通</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>
+            <div class="td-project-name" onclick="openProjectFile()">测试项二</div>
+          </td>
+          <td>3672.00</td>
+          <td>中山市</td>
+          <td>工业</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>
+            <div class="td-project-name" onclick="openProjectFile()">测试项三</div>
+          </td>
+          <td>3578.00</td>
+          <td>云浮市</td>
+          <td>工业</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>
+            <div class="td-project-name" onclick="openProjectFile()">测试项四</div>
+          </td>
+          <td>143676.00</td>
+          <td>深圳市</td>
+          <td>农业</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    function openProjectFile(){
+      window.parent.location.href='projectBook/projectFiles.html'
+    }
+  </script>
+</body>
+</html>

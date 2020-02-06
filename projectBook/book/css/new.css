@@ -1,0 +1,300 @@
+@charset "utf-8";
+.clear{
+  clear:both;
+  display:block;
+  overflow:hidden;
+}
+.foot-message{
+	bottom: -5px;
+}
+.year{
+	position:absolute;
+	font-size: 24px!important;
+    top: 261px;
+    right: -14px;
+}
+#fb7 .fb7-page-book .foot-message p{
+	font-size: 20px;
+	font-weight:200;
+}
+ #fb7  #mlasu ul{
+ 	width:80%;
+ 	margin-left:24%!important;
+ 	margin-top:45px!important;
+ }
+ #mlasu ul li{
+ 	height:52px;
+ }
+ #mlasu li a{
+ 	font-size:20px;
+ 	color:#2e567b;
+ 	height:40px;
+ }
+ #fb7 h1.book_title{
+ 	font-size:20px;
+ }
+ #fb7 .project_info{
+	padding-right:20px;
+ }
+ #fb7 .project_info p{
+	font-size:18px;
+ 	color:#333;
+ 	font-family:'微软雅黑';
+ }
+ #fb7 .fb7-page-book p{
+ 	margin-bottom:10px;
+ }
+ #fb7 .fb7-page-book p span{
+ 	display:inline-block;
+ 	/* height:100%; */
+ 	color:#333;
+ 	font-size:18px;
+ }
+ #fb7 .fb7-page-book .right_span{
+ 	float:right;
+ 	width:470px;
+ }
+  #fb7 .project_info_more{
+ 	margin-top:20px;
+ 	
+ }
+ #fb7 .project_info_more p{
+ 	margin-bottom:10px; 
+ }
+ #fb7 .project_info_more p span{
+ 	font-size:15px;
+ }
+ #fb7 .project_info_more .more_left{
+ 	width:59%;
+ }
+ #fb7 .project_info_more .more_right{
+ 	width:40%;
+ }
+ #fb7 .project_info h2.book_h2{
+ 	color:#333;
+ 	font-size:19px;
+ 	font-weight:bold;
+ }
+ #fb7 .project_info h2.book_h2 span{
+ 	float:right;
+ 	color:#0a5c92;
+ 	font-size:16px;
+ 	font-weight:400;
+ }
+ #fb7 .book_tb1 tr:first-of-type{
+ 	border-width:1px 0 1px 0;
+ 	border-color:#333;
+ 	border-style:solid;
+ 	background:rgba(0,0,0,0)!important;
+ }
+ #fb7 .book_tb1 th, #fb7 .book_tb1 td{
+ 	height:50px;
+ 	line-height:50px;
+ 	text-align:center;
+ 	color:#333;
+ 	font-size:18px;
+ 	font-weight:400;
+ 	vertical-align: middle;
+ }
+ #fb7 .book_tb1 td{
+ 	font-size:14px;
+ }
+ #fb7 .book_tb1 tr:nth-child(odd){
+ 	background:#ddd;
+ }
+ #fb7 .auditing_list .auditing_item{
+ 	margin-top:20px;
+ 	padding-bottom:10px;
+ 	border-bottom:1px solid #333;
+ }
+  #fb7 .auditing_list .auditing_item:last-of-type{
+ 	border-bottom:0;
+ }
+ #fb7 .auditing_list .auditing_item h3{
+ 	font-size:18px;
+ 	font-weight:bold;
+ }
+ #fb7 .auditing_item .more_left{
+ 	float:left;
+ 	width:50%;
+ 	font-size:16px;
+ }
+ #fb7 .auditing_item .more_info_text{
+ 	margin-right:5px;
+ 	float:right;
+ 	display:inline-block;
+ 	width:205px;
+ 	position:relative;
+ 	top:2px;
+ }
+ #fb7 .auditing_item .more_right{
+ 	float:right;
+ 	width:50%;
+ 	font-size:16px;
+ }
+ #fb7 .process_list ul li{
+ 	list-style:none;
+ }
+ #fb7 .process_item .more_left{
+ 	width:59%;
+ 	font-size:18px;
+ }
+ #fb7 .process_item .more_right{
+ 	width:40%;
+ 	font-size:18px;
+ }
+ #fb7 .process_list .process_item{
+ 	padding-bottom:15px;
+ }
+ #fb7 .process_info .book_h2{
+ 	color:#333;
+ 	font-size:18px;
+ 	font-weight:bold;
+ }
+ #fb7 .project_info .book_tb2{
+ 	margin-top:10px;
+ }
+ #fb7 .project_info .book_tb2 th{
+ 	border:1px solid #333;
+ 	line-height:25px
+ }
+  #fb7 .book_tb2 tr:nth-child(even){
+ 	background:#ddd;
+ }
+ #fb7 .book_tb2 tr:nth-child(odd){
+ 	background:rgba(0,0,0,0);
+ }
+ #fb7 h1.project_title{
+ 	font-size:20px;
+ 	color:#2e567b;
+ }
+ #fb7 h1.project_title img{
+ 	margin-right:10px;
+ }
+ #fb7 .project_info_more .mark{
+ 	font-size:20px;
+ 	color:#0c62dc;
+ 	font-weight:bold;
+ }
+  #fb7 .project_mark{
+  	height:240px;
+  	border:1px solid #ccc;
+  	position:relative;
+  }
+  #fb7 .mark_line{
+  	margin-top:100px!important;
+  	margin-left:80px!important;
+  }
+  #fb7 .mark_line li{
+  	list-style:none!important;
+  	float:left;
+  	width:100px;
+  	height:20px;
+  	background:#bccde6;
+  	border-right:4px solid #fff;
+  	box-sizing:border-box;
+  }
+  #fb7 .mark_line li:first-of-type{
+  	border-radius:10px 0 0 10px;
+  }
+  #fb7 .mark_line li:nth-of-type(2){
+  	background:#9abded;
+  }
+  #fb7 .mark_line li:nth-of-type(3){
+  	background:#6da0ea;
+  }
+  #fb7 .mark_line li:last-of-type{
+  	border-radius:0px 10px 10px 0px;
+  	background:#0c62dc;
+  }
+  #fb7 .mark_num {
+  	margin-left:30px!important;
+  	margin-top:20px!important;
+  }
+  #fb7 .mark_num li{
+  	list-style:none!important;
+  	float:left;
+  	width:100px;
+  	height:20px;
+  	text-align:center;
+  	font-size:20px;
+  	color:#999;
+  }
+   #fb7 .mark_text {
+  	margin-left:70px!important;
+  	margin-top:20px!important;
+  }
+  #fb7 .mark_text li{
+  	list-style:none!important;
+  	float:left;
+  	width:105px;
+  	height:20px;
+  	text-align:center;
+  	font-size:20px;
+  	color:#2e567b;
+  }
+  .page12table{
+  	width:1280px;
+  }
+  .page13table{
+  	width:1280px;
+  	left: -605px;	
+  }
+  .mlNr{
+  	padding: 10px 20px 10px 20px;
+  }
+   #fb7 .project_mark .mark_pop{
+   	width:80px;
+   	height:40px;
+   	position:absolute;
+   	background:#0c62dc;	
+   	border-radius:5px;
+   	top:45px;
+   	left:390px;
+   }
+   #fb7 .project_mark .mark_pop:after{
+   	content:'';
+   	position:absolute;
+   	width:0;
+   	height:0;
+   	border:8px solid #0c62dc;
+   	border-top-color:transparent;
+   	border-right-color:transparent;
+   	transform:rotate(-45deg);
+   	top:31px;
+   	left:30px;
+   }
+   #fb7 .project_mark .mark_pop p{
+   	font-size:20px;
+   	color:#fff;
+   	line-height:40px;
+   	text-align:center;
+   }
+    #fb7 .project_mark .mark_pop p span{
+    font-size:20px;
+    color:#fff;
+    margin-left:5px;
+    }
+    #fb7  #planInfo td div{
+    padding:0 5px;
+   	line-height:20px;
+    text-align: center;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    word-wrap: break-word;
+    }
+    .scrollbox::-webkit-scrollbar {/*滚动条整体样式*/
+            width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+            height: 4px;
+        }
+        .scrollbox::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.2);
+        }
+        .scrollbox::-webkit-scrollbar-track {/*滚动条里面轨道*/
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            border-radius: 0;
+            background: rgba(0,0,0,0.1);
+        }

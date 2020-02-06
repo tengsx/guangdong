@@ -1,0 +1,320 @@
+.rotateBg{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	-webkit-perspective: 1000px;
+	-webkit-perspective-origin: 50% 0%;
+	perspective: 1000px;
+  perspective-origin: 50% 0%;
+}
+.rotate1{
+	position: absolute;
+	z-index: 0;
+	width: 483px;
+	height: 489px;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d !important;
+	transform-style: preserve-3d !important;
+	animation: cir 10s linear 0s infinite;
+	-webkit-animation: cir 10s linear 0s infinite;	
+}
+@-webkit-keyframes cir {
+  0% {
+    -webkit-transform: rotateX(75deg) rotateY(0deg) rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(75deg) rotateY(0deg) rotateZ(-360deg);
+  }
+}
+@-webkit-keyframes cir2 {
+  0% {
+    -webkit-transform: rotateX(72deg) rotateY(0deg) rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(72deg) rotateY(0deg) rotateZ(-360deg);
+  }
+}
+.img1{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url(../images/importantProject/rotate1.png);
+	background-size: 100% 100%;
+	-webkit-animation: cirImg1 5s linear 0s infinite;
+	animation: cirImg1 5s linear 0s infinite;
+}
+@-webkit-keyframes cirImg1 {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(-360deg);
+  }
+}
+.rotate2{
+	position: absolute;
+	z-index: 1;
+	width: 484px;
+	height: 492px;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d !important;
+	transform-style: preserve-3d !important;
+	animation: cir 10s linear 0s infinite;
+	-webkit-animation: cir 10s linear 0s infinite;
+}
+.img2{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url(../images/importantProject/rotate2.png);
+	background-size: 100% 100%;
+	-webkit-animation: cirImg2 5s linear 0s infinite;
+	animation: cirImg2 5s linear 0s infinite;
+}
+@-webkit-keyframes cirImg2 {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(-360deg);
+  }
+}
+.rotate3{
+	position: absolute;
+	z-index: 2;
+	width: 366px;
+	height: 366px;
+	top: -20px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d !important;
+	transform-style: preserve-3d !important;
+	animation: cir2 10s linear 0s infinite;
+	-webkit-animation: cir2 10s linear 0s infinite;
+}
+.img3{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url(../images/importantProject/rotate3.png);
+	background-size: 100% 100%;
+	-webkit-animation: cirImg1 5s linear 0s infinite;
+	animation: cirImg3 5s linear 0s infinite;
+}
+@-webkit-keyframes cirImg3 {
+  0% {
+    -webkit-transform: rotateZ(-360deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(0deg);
+  }
+}
+.rotate4{
+	position: absolute;
+	z-index: 3;
+	width: 251px;
+	height: 251px;
+	top: -50px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d !important;
+	transform-style: preserve-3d !important;
+	animation: cir 10s linear 0s infinite;
+	-webkit-animation: cir 10s linear 0s infinite;
+}
+.img4{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url(../images/importantProject/rotate4.png);
+	background-size: 100% 100%;
+	-webkit-animation: cirImg1 5s linear 0s infinite;
+	animation: cirImg4 5s linear 0s infinite;
+}
+@-webkit-keyframes cirImg4 {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(-360deg);
+  }
+}
+.rotate5{
+	position: absolute;
+	z-index: 4;
+	width: 219px;
+	height: 222px;
+	top: -60px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d !important;
+	transform-style: preserve-3d !important;
+	animation: cir 10s linear 0s infinite;
+	-webkit-animation: cir 10s linear 0s infinite;
+}
+.img5{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url(../images/importantProject/rotate5.png);
+	background-size: 100% 100%;
+	-webkit-animation: cirImg1 5s linear 0s infinite;
+	animation: cirImg5 5s linear 0s infinite;
+}
+@-webkit-keyframes cirImg5 {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(-360deg);
+  }
+}
+.rotate6{
+	position: absolute;
+	z-index: 5;
+	width: 188px;
+	height: 188px;
+	top: -70px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d !important;
+	transform-style: preserve-3d !important;
+	animation: cir 10s linear 0s infinite;
+	-webkit-animation: cir 10s linear 0s infinite;
+}
+.img6{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url(../images/importantProject/rotate6.png);
+	background-size: 100% 100%;
+	-webkit-animation: cirImg1 5s linear 0s infinite;
+	animation: cirImg6 5s linear 0s infinite;
+}
+@-webkit-keyframes cirImg6 {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(-360deg);
+  }
+}
+.rotate7{
+	position: absolute;
+	z-index: 6;
+	width: 140px;
+	height: 140px;
+	top: -60px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d !important;
+	transform-style: preserve-3d !important;
+	animation: sanjiao 10s ease 0s infinite;
+	-webkit-animation: sanjiao 10s ease 0s infinite;
+}
+.img7{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url(../images/importantProject/sanjiao.png);
+	background-size: 100% 100%;
+	-webkit-animation: cirImg7 3s linea7 0s infinite;
+	animation: cirImg7 3s linear 0s infinite;
+}
+.img7span{
+	width: 80px;
+    transform-style: preserve-3d;
+    transform: rotateX(-80deg);
+    position: relative;
+    top: 23px;
+    left: 32px;
+}
+@-webkit-keyframes sanjiao {
+  0% {
+    -webkit-transform: rotateX(75deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(75deg) rotateY(0deg);
+  }
+}
+@-webkit-keyframes cirImg7 {
+  0% {
+     transform: scale(1);
+  }
+  25% {
+     transform: scale(0.7);
+  }
+  100% {
+     transform: scale(1);
+  }
+}
+
+
+/* 外层年份旋转 */
+.forYear{
+	position: absolute;
+	z-index: 10;
+	width: 850px;
+	height: 200px;
+	margin: 0 auto;
+	margin-top: 250px;
+}
+.yearContent{
+	width: 150px;
+	height: 70px;
+	border-left: 2px solid #53fdff;
+	opacity: 1;
+	background: linear-gradient(to right,rgba(28,250,254,0.3),rgba(66,252,255,0.05));
+	display: flex;
+	flex-flow: column;
+	cursor: pointer;
+}
+.years{
+	color: #ffcc2f;
+	font-size: 18px;
+	padding-left: 10px;
+	height: 30px;
+	line-height: 2;
+}
+.itemName{
+	display: flex;
+	justify-content: center;
+	color: #c7fffe;
+	font-size: 18px;
+	align-items: center;
+	height: 100%;
+	padding: 0px 10px;
+}

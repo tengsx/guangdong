@@ -1,0 +1,1044 @@
+@charset "utf-8";
+html{
+	height: 100%;
+}
+body{
+	height: 100%;
+	font-family: '微软雅黑';
+}
+select{
+	font-family: '微软雅黑';
+}
+ @font-face {
+    font-family: 'digifacewide';
+    src: url('font/Digital-7Mono.TTF');
+  }
+  @font-face {
+    font-family: 'zongyi';
+    src: url('font/FZZQJW.TTF');
+  }
+.BMap_noprint,.anchorBL{
+  display: none;
+}
+/* centralInvest */
+.container{
+	background-image: url(../images/centralInvest/body-bg.png);
+	background-size: 100% 100%;
+}
+.header{
+	height: 4.1666667vw;
+	background-image: url(../images/centralInvest/head-bg.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+.header .sys{
+	display: flex;
+	align-items: center;
+	position: absolute;
+	height: 100%;
+}
+.header .sys-back{
+  top: 1.0416667vw;
+  right: 0;
+  height: 2.083333vw;
+  width: 4.16666667vw;
+  background-color: #0d3dbb;
+  border-radius: 100px 0 0 100px;
+  flex-direction: row;
+  justify-content: center;
+  cursor: pointer;
+}
+.header .sys-back img{
+  width: 0.8333333vw;
+}
+.header .sys-back span{
+  color: #fff;
+  font-size: 0.72916667vw;
+  margin-left: .1vw;
+}
+.header .sys-time{
+	right: 6.25vw;
+	font-family: 'digifacewide';
+	color: #15faff;
+	font-size: 1.25vw;
+}
+.header .sys-tab{
+	right: 18.75vw;
+}
+.header .sys-stop{
+  right: 41.1458333vw;
+  top: 2.0833333vw;
+	background-image: url(../images/stop.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 4.42708333vw;
+  height: 1.5625vw;
+	cursor: pointer;
+}
+.header .sys-stop.active{
+	background-image: url(../images/start.png);
+}
+.header .sys-tab span{
+	color: #fff;
+	margin-right: .3vw;
+	font-size: 0.9375vw;
+}
+.header .sys-tab select{
+	height: 2.083333vw;
+	border:0;
+	outline: 0;
+  padding-right: 1.5vw;
+  padding-left: .5vw;
+	background-color: #02041c;
+	color: #15faff;
+	border-radius: 5px;
+	appearance: none; /* 去掉默认图标 */
+	-moz-appearance: none; /* Firefox */
+	-webkit-appearance: none; /* Safari and Chrome */
+	background-image: url('../images/centralInvest/down.png'); 
+	background-repeat: no-repeat;
+	background-position: calc(100% - 5px) center;
+  background-size: 10%;
+  font-size:0.833333vw; 
+}
+.content{
+	padding: 1.04166667vw 0;
+	position: relative;
+	box-sizing: border-box;
+}
+.to-big{
+  position: absolute;
+  top: 1.0416667vw;
+  right: 1.0416667vw;
+  width: 1.25vw;
+  height: 1.25vw;
+  background-image: url(../images/zoom.png);
+  background-size: 100% 100%;
+}
+.data-tab{
+	position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+	top: 1.04166667vw;
+	z-index: 999;
+}
+.data-area{
+	top: auto;
+	bottom: 2.6041667vw;
+	width: 10.41666667vw;
+	line-height: 2.6041667vw;
+	background-image: linear-gradient(to right, #15f9ff, #2280cc);
+	border-radius: 5px;
+	font-size: 1.25vw;
+	text-align: center;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.data-tab .item{
+	cursor: pointer;
+	float: left;
+	display: flex;
+	align-items: center;
+	font-size: 0.8333333vw;
+	justify-content: center;
+	color: #15faff;
+	width:4.1666667vw;
+  height: 1.6666667vw;
+  padding: 0;
+  background-color: #25357c;
+  border-radius: 3px 0 0 3px;
+	/* background: url('../images/centralInvest/dataTab.png')no-repeat center center / 100%; */
+}
+.data-tab .item:last-of-type{
+  border-radius: 0 3px 3px 0;
+}
+.data-tab .item.active{
+  background-color: #00b7d8;
+	color: #fff;
+	font-weight: bold;
+	/* background: url('../images/centralInvest/dataTab-a.png')no-repeat center center / 100%; */
+}
+.map-tab{
+  left: auto;
+  transform: translateX(0);
+  right: 4.1666667vw;
+}
+.map-tab .item{
+  width: 3.125vw;
+  height: 1.6666667vw;
+}
+.map-back{
+  position: absolute;
+  top: 1.04166667vw;
+  right: 11.1979167vw;
+  height: 1.6666667vw;
+  background-color: #25357c;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 7px;
+  z-index: 9999;
+  cursor: pointer;
+}
+.map-back span{
+  color: #15faff;
+  font-size: 0.7291667vw;
+  padding: 0 0.5208333vw;
+}
+.map-back img:first-of-type{
+  width: 1vw;
+}
+.map-back img:last-of-type{
+  width: 1.25vw;
+}
+.map-sum{
+  position: absolute;
+  top: 1.04166667vw;
+  left: 1.04166667vw;
+}
+.map-sum .map-sum-title,.map-sum .num-trend{
+  color: #fff;
+  font-size: 0.833333vw;
+}
+.map-sum .map-sum-num{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 0.5208333vw;
+  align-items: flex-end;
+}
+.map-sum .map-sum-num .num-item{
+  background-color: #00b7d8;
+  height: 2.6041667vw;
+  line-height: 2.6041667vw;
+  width: 2.0833333vw;
+  border-radius: 2px;
+  font-family: 'zongyi';
+  font-size: 1.857vw;
+  color: #fff;
+  text-align: center;
+  margin-right: .2vw;
+}
+.map-sum .map-sum-num .num-trend-img{
+  height: 0.72916667vw;
+  width: 0.72916667vw;
+  background: url(../images/centralInvest/trend-up.png);
+  background-size: 100% 100%;
+}
+.map-zoom{
+  position: absolute;
+  top: 4.6875vw;
+  right: 1.04166667vw;
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+}
+.map-zoom span{
+  width: 1.35416667vw;
+  height: 1.35416667vw;
+  background-size: 100% 100%;
+}
+.map-zoom span:first-of-type{
+  background-image: url(../images/zoom-out.png);
+  cursor: pointer;
+}
+.map-zoom span:nth-of-type(2){
+  margin-top: .625vw;
+  cursor: pointer;
+  background-image: url(../images/zoom-up.png);
+}
+.map-zoom span:last-of-type{
+  margin-top: .625vw;
+ color: #fff;
+ font-size: .625vw;
+ text-align: center;
+}
+.content .content-top,.content .content-bottom{
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+}
+.content .content-top{
+	height: 33.3333333vw;
+	margin-bottom: 1.041666vw;
+}
+.content-top .top-r{
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+}
+.content-top .top-r,.bottom-r{
+	width: 31.25vw;
+	margin-left: 1.041666vw;
+}
+.map-wrap{
+  z-index: 20;
+}
+.bmap-wrap{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  padding: 10px;
+  z-index: -1;
+}
+.bmap-legend{
+  display: none;
+  position: absolute;
+  right: 4.1666667vw;
+  bottom: 2.60416667vw;
+  z-index: 9999;
+  
+  width: 5.7291667vw;
+}
+.bmap-legend .legend-title{
+  background-color: #0e3763;
+  border-radius: 3px 3px 0 0;
+}
+.bmap-legend div{
+  display: flex;
+  align-items: center;
+  padding: 0.5208333vw;
+  color: #fff;
+  font-size: 0.72916667vw;
+  background: #0a113b;
+}
+.bmap-legend div img{
+  margin-right: 0.5208333vw;
+}
+.bmap-legend div span{
+  font-size: 0.72916667vw;
+}
+.item{
+	box-sizing: border-box;
+	padding: 1.041666vw;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.pro-map{
+	width: 65.625vw;
+	height: 100%;
+	background-image: url('../images/centralInvest/top-l.png');
+}
+.pro-status{
+ 	height: 11.4583333vw;
+ 	background-image: url('../images/centralInvest/top-r1.png');
+ }
+.pro-status>div{
+ 	display: flex;
+
+ }
+.pro-invest{
+ 	height: 20.8333333vw;
+ 	background-image: url('../images/centralInvest/top-r2.png');
+}
+ .item .item-title{
+ 	position: absolute;
+ 	top: 1vw;
+ 	left: 50%;
+ 	transform: translateX(-50%);
+	font-weight: bold;
+	font-size: 0.9375vw;
+	color: #15faff;
+	text-indent: 1.5vw;;
+ }
+ .item .item-title:before{
+	content: '';
+	position: absolute;
+	width: 0.9375vw;
+	height: 0.9375vw;
+	background: #15faff;
+	left: 0;
+	top: .15vw;
+ }
+ .pro-status .status-item{
+	position: relative;
+	padding-left: 3.2vw;
+	width: 5.208333vw;
+ }
+ .pro-status .status-item .rotate-img{
+	position: absolute;
+	width: 5.4166667vw;
+	top: 2.302083vw;
+  animation: rotate 3s linear infinite;
+ }
+ .pro-status .status-item .rotate-img:hover{
+  animation-play-state:paused;
+ }
+ .pro-status .jian{
+ 	position: absolute;
+ 	top: 50%;
+ 	transform: translateY(-50%);
+	left: 10.416667vw;
+ }
+ .pro-status .jian:last-of-type{
+	left: 19.2708333vw;
+ }
+ @keyframes rotate{from{transform: rotate(0deg)}
+    to{transform: rotate(359deg)}
+}
+ .pro-status .status-item .status-item-num{
+ 	font-family: 'zongyi';
+ 	margin-top: 2.302083vw;
+ 	width: 5.208333vw;
+ 	line-height: 5.208333vw;
+ 	text-align: center;
+ 	color: #15faff;
+  font-size: 1.6666667vw;
+ 	font-weight: bolder;
+ 	/* background: url('../images/centralInvest/sItem-bg.png')no-repeat center center / 100%; */
+ }
+ .pro-status .status-item .status-item-text{
+ 	margin-top: 0.520833vw;
+ 	color: #fff;
+   text-align: center;
+   width: 7vw;
+ }
+ .content-bottom{
+ 	height: 15.625vw;
+ }
+ .pro-important,.pro-industry{
+ 	height: 100%;
+ 	background-image: url('../images/centralInvest/bottom-l.png');
+ }
+ .pro-important{
+ 	background-image: url('../images/centralInvest/bottom-r.png');
+ }
+ .bottom-l{
+ 	width: 65.625vw;
+ 	box-sizing: border-box;
+ }
+ .timeline{
+ 	position: absolute;
+ 	top:7.8125vw;
+ 	left: 2vw;
+ 	height: 22.395833vw;
+ 	z-index: 999999;	
+ }
+ .timeline>div{
+ 	height: 100%;
+ 	position: relative;
+ 	width: 10vw;
+ }
+ .timeline:before{
+ 	content: '';
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ 	width: 2px;
+ 	height: 100%;
+ 	border-left: 1px dashed #89e8ff;
+ }
+ .timeline p{
+ 	color:#92cccc;
+ 	cursor: pointer;
+ 	font-size: 1.0416667vw;
+ 	text-indent: 2vw;
+ 	position: absolute;
+ 	top: 0%;
+ 	left: 0;
+ 	transform: translateY(-50%);
+ 	transition: all 1s ease;
+ }
+ .timeline p:nth-of-type(2){
+ 	top: 11.0857%;
+ 	transform: translateY(50%);
+ }
+ .timeline p:nth-of-type(3){
+ 	top: 24.571428%;
+ 	transform: translateY(50%);
+ }
+ .timeline p:nth-of-type(4){
+ 	top: 38.85711%;
+ 	transform: translateY(50%);
+ }
+ .timeline p:nth-of-type(5){
+ 	top: 53.1428%;
+ 	transform: translateY(50%);
+ }
+ .timeline p:nth-of-type(6){
+ 	top: 67.4285%;
+ 	transform: translateY(50%);
+ }
+ .timeline p:nth-of-type(7){
+ 	top: 81.7142%;
+ 	transform: translateY(50%);
+ }
+ .timeline p:nth-of-type(8){
+ 	top: auto;
+ 	bottom: 0%;
+ 	transform: translateY(50%);
+ }
+ .timeline p:before{
+ 	content: '';
+ 	position: absolute;
+ 	width: 10px;
+ 	height: 1px;
+ 	background: #89e8ff;
+ 	top: 50%;
+ 	transform: translateY(-50%);
+ 	left: 0
+ }
+ .timeline p.active:before{
+ 	content: '';
+ 	position: absolute;
+ 	width: 16px;
+ 	height: 16px;
+ 	background: none;
+ 	background-image: url(../images/timeline.png);
+ 	background-repeat: no-repeat;
+ 	background-position: center;
+ 	background-size: 90%;
+ 	top: 50%;
+ 	transform: translateY(-50%);
+ 	left: -8px;
+ }
+ .timeline p.active{
+ 	color:#15faff;
+ 	font-size: 1.25vw;
+ 	font-weight: bold;
+ }
+ /* 重点项目计划 */
+.important .container{
+	background-image: url(../images/importantProject/body-bg.png);
+}
+.important .header{
+	background-image: url(../images/importantProject/head-bg.png);
+}
+.important .pro-map{
+	background-image: none;
+	position: relative;
+}
+.important .map-tab{
+  right: 0;
+}
+.important .map-tab .item{
+  border-radius: 0;
+}
+.important .map-back{
+  right: 7.2916667vw;
+  border-radius: 0;
+}
+.important .data-area{
+  display: none;
+  width: auto;
+  padding-right: .5vw;
+  padding-left: .5vw;
+}
+.important .map-wrap{
+  visibility: hidden;
+}
+.important .pro-industry{
+ 	height: 100%;
+ 	background-image: url('../images/importantProject/bottom-l.png');
+ }
+.important .pro-important{
+ 	background-image: url('../images/importantProject/top-r.png');
+ }
+ .important .pro-status,.important .pro-invest{
+ 	height: 15.625vw;
+ 	background-image: url('../images/importantProject/top-r.png');
+ }
+ .important .pro-status{
+ 	margin-top: 1vw;
+ }
+ .important .item .item-title{
+ 	position: absolute;
+ 	top: .3vw;
+ 	left: 50%;
+ 	transform: translateX(-50%);
+	text-indent: 0;
+ }
+ .important .item .item-title:before{
+	width: 0;
+	height: 0;
+ }
+ .important  .more-title .item-title{
+ 	width: 50%;
+ 	text-align: center;
+ 	left: 0;
+ 	transform: translateX(0);
+ }
+ .important  .more-title .item-title:last-of-type{
+ 	left: 50%;
+ }
+ .rotate-title {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+ }
+ .rotate-title h1{
+ 	font-size: 2.083333vw;
+ 	font-weight: bold;
+ 	color: #fff;
+ 	text-align: center;
+ }
+ .title-num {
+ 	margin-top: 1vw;
+ 	display: flex;
+    justify-content: center;
+ }
+ .title-num .num-item{
+ 	float: left;
+ 	width: 3.125vw;
+ 	height: 4.16666667vw;
+ 	background-image: url('../images/importantProject/num-item.png');
+ 	background-size:100% 100%;
+ 	background-repeat: no-repeat;
+ 	line-height: 4.16666667vw;
+ 	text-align: center;
+ 	font-size: 2.6041667vw;
+ 	font-weight: bold;
+ 	font-family: 'digifacewide';
+ 	color: #1cfafe;
+ 	margin-right: 0.520833vw;
+ }
+ .title-num .num-item:last-of-type{
+ 	background-image: none;
+ 	font-size: 1.25vw;
+ 	font-family:Sans-serif; 
+ }
+ /* 项目列表样式 */
+ .table-wrap{
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #0d1141;
+ }
+ .table-wrap table{
+   width: 100%;
+   color: #fff;
+ }
+ .table-wrap table th{
+  height: 40px;
+  text-align: center;
+  border-right: 1px solid #0d1141;
+  background: #294090;
+ }
+ .table-wrap table td{
+  height: 40px;
+  text-align: center;
+  background: #15215d;
+  border-right: 1px solid #0d1141;
+  border-bottom: 1px solid #0d1141;
+ }
+ .table-wrap .num{
+  width: 60px;
+ }
+ .table-wrap .td-project-name{
+   cursor: pointer;
+ }
+ .plan-top{
+   display: none;
+   position: absolute;
+   left: 0;
+   top: 11.4583333vw;
+   width: 14.583333vw;
+   height: 16.927083vw;
+   background: #081744;
+   border: 1px solid #043366;
+   z-index: 9999;
+   transition: all .5s ease;
+ }
+ .plan-top .plan-top-wrap{
+   width: 100%;
+   height: 100%;
+   padding: 0.78125vw;
+   box-sizing: border-box;
+   padding-top: 0;
+ }
+ .plan-top .plan-top-wrap .plan-top-title{
+   display: flex;
+   justify-content: flex-start;
+   flex-direction: row;
+   align-items: center;
+   line-height: 2.34375vw;
+   border-bottom: 1px solid #1f2e58;
+ }
+ .plan-top .plan-top-wrap .plan-top-title span{
+   font-size: 0.8333333vw;
+   font-weight: bold;
+   color: #fff;
+   margin-right: 1.04166667vw;
+ }
+ .plan-top .plan-top-content{
+   padding: 0;
+ }
+ .plan-top .content-item-top{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.22041667vw 0;
+}
+ .plan-top .content-item-top .item-num{
+   color: #1cf9fd;
+   flex: .7;
+ }
+ .plan-top .content-item-top .item-name{
+  color: #fff;
+  font-size: 0.72916667vw;
+  font-weight: bold;
+  flex: 6.3;
+}
+.plan-top .content-item-top .item-invest{
+  color: #ffd119;
+  font-size: 0.72916667vw;
+  flex: 3;
+}
+.plan-top .content-item-top .item-progress{
+  flex: 9.3;
+}
+.plan-top .content-item-top .item-progress .item-progress-l{
+  height: 0.5208333vw;
+  width: 100%;
+  background: linear-gradient(to right, #07b2fb,#22d5be);
+}
+ /* 重写layer弹窗样式 */
+ .layui-layer-blue .layui-layer-title{
+   background-color: #0d39a2;
+   color: #fff;
+   font-weight: bold;
+ }
+ /* 一核一带一区 */
+ .OCOZ .container{
+	background-image: url(../images/OCOZ/body-bg.png);
+}
+.OCOZ .header{
+	background-image: url(../images/OCOZ/head-bg.png);
+}
+ .content-row{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+ }
+ .content-row .content-l,.content-row .content-r{
+   width: 26.0416667vw;
+ }
+ .content-row .content-c{
+  width: 43.75vw;
+}
+.content-row .content-c .item{
+  position: relative;
+}
+.content-row .content-l .content-l-item,.content-row .content-r .content-r-item{
+  height: 24.4791667vw;
+  position: relative;
+}
+.content-l-item .title,.content-r-item .title{
+  height: 3.125vw;
+  background-image: url(../images/OCOZ/title.png);
+  background-size: 100% 100%;
+}
+.content-l-item .title p,.content-r-item .title p{
+  line-height: 3.125vw;
+  text-indent: 0.7291667vw;
+  color: #fff;
+  font-size: 0.9375‬vw;
+}
+.content-row .e-wrap{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding-top: 3.125vw;
+  box-sizing: border-box;
+}
+.content-row .content-c .content-c-item{
+  height: 100%;
+  position: relative;
+}
+.content-row .e-tab{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 3.125vw;
+  left: 0;
+  padding: 1.0416667vw;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  z-index: 9999;
+}
+.content-row .e-tab .e-tab-item{
+  height: 1.82291667vw;
+  width: 5.208333vw;
+  border: 1px solid #43529b;
+  color: #43529b;
+  font-size: 0.833333vw;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.82291667vw;
+  cursor: pointer;
+}
+.content-row .e-tab .e-tab-item:first-of-type{
+  margin-right: 1.3020833vw;
+}
+.content-row .e-tab .e-tab-item.active{
+  border: 1px solid #1393ff;
+  color: #1393ff;
+  box-shadow: inset 1px 1px 5px #1393ff,inset -1px -1px 5px #1393ff;
+}
+.invest-table{
+  width: 100%;
+  margin-top: 1.5625vw;
+}
+.invest-table thead{
+  border: 1px solid #57b1ff;
+  box-shadow: inset 1px 1px 5px #57b1ff,inset -1px -1px 5px #57b1ff;
+}
+.invest-table thead th{
+  height:2.864583vw;
+  color: #57b1ff;
+  font-size: 0.833333vw;
+  text-align: center;
+  font-weight: 600;
+}
+.invest-table tr{
+  border-bottom: 1px solid #2d3768;
+}
+.invest-table td{
+  font-size: 0.72916667vw;
+  color: #fff;
+  text-align: center;
+  height: 2.60416667vw;
+}
+.invest-table tr .num{
+  display: inline-block;
+  box-sizing: border-box;
+  height: 0.72916667vw;
+  width: 0.72916667vw;
+  border: 1px solid #7ecef4;
+  color: #7ecef4;
+  text-align: center;
+  line-height:   0.72916667vw;
+  border-radius: 2px;
+  font-size: 0.57291666vw;
+}
+.invest-table tr .num.first{
+  border: 0;
+  color: #fff;
+  background: #ff394b;
+}
+.invest-table tr .num.second{
+  border: 0;
+  color: #fff;
+  background: #ec6941;
+}
+.invest-table tr .num.third{
+  border: 0;
+  color: #fff;
+  background: #f8b551;
+}
+.invest-table tr .invest{
+  color: #ffc30d;
+}
+.content-c .bmap-legend{
+  display: block;
+  right: 4.6875vw;
+  bottom: 11.4583333vw;
+}
+.content-c .bmap-legend .legend-module{
+  width: 1.5625vw;
+  height: 0.8333333vw;
+  background-color: #666;
+  margin-right: .5vw;
+}
+.content-c .bmap-legend .legend-module img{
+  width: 100%;
+}
+.content-c .bmap-legend .legend-module:nth-of-type(2){
+  background-color: #0d3dbb;
+}
+.content-c .bmap-legend .legend-module:last-of-type{
+  background-color: #016dff;
+}
+.content-c .map-module{
+  position: absolute;
+  left: 1.25vw;
+  top: 6.25vw;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+}
+.content-c .map-module .map-module-item{
+  width: 4.1666667vw;
+  height: 1.5625vw;
+  line-height: 1.5625vw;
+  color: #15faff;
+  font-size: 0.8333333vw;
+  background-color: #25357c;
+  border-radius: 3px;
+  text-align: center;
+  margin-bottom: .4vw;
+  cursor: pointer;
+}
+.content-c .map-module .map-module-item.active{
+  color: #fff;
+  background: #00b7d8;
+  font-weight: bold;
+}
+.year-tab{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 9.375vw;
+  width: 13.5416667vw;
+  z-index: 9999;
+  color: #fff;
+  height: 1.5625vw;
+}
+.year-tab-wrap{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.year-tab-wrap .year-tab-btn{
+  position: absolute;
+  left: -1vw;
+  width: 0;
+  height: 0;
+  border-width: .5vw;
+  border-style: solid;
+  border-color: #42abd9 transparent transparent transparent;
+  transform: rotate(90deg);
+  top: .1vw;
+  cursor: pointer;
+}
+.year-tab-conten{
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+.year-tab-conten ul li{
+  position: absolute;
+  width: 3.125vw;
+  font-size: 0.9375vw;
+  text-align: center;
+}
+.year-tab-wrap .year-tab-btn.year-tab-rigth{
+  transform: rotate(-90deg);
+  left: auto;
+  right:-1vw;
+}
+.year-tab-wrap .year-tab-cur{
+  color: #14e4eb;
+  font-size: 1.5625vw;
+  font-weight: bold;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -.4vw;
+  width: 5vw;
+}
+.year-tab-wrap .year-tab-l{
+  left: 0%;
+}
+.year-tab-wrap .year-tab-r{
+  right: 0%;
+
+}
+/* 民间资本推荐项目 */
+.privateCapital .container{
+	background-image: url(../images/privateCapital/body-bg.png);
+}
+.privateCapital .header{
+	background-image: url(../images/privateCapital/head-bg.png);
+}
+.privateCapital .content-row .content-l{
+  width: 28.645833vw;
+  margin-top: 1.0416667vw;
+}
+.privateCapital .content-row .content-l .content-l-item{
+  background-image: url(../images/privateCapital/l-item-bg.png);
+  background-size: 100% 100%;
+  height: 23.958333vw;
+ }
+.privateCapital .content-row .content-l .title,.privateCapital .content-row .content-c .title{
+ background: none;
+ font-size: 0.9375vw;
+ font-weight: bold;
+}
+.privateCapital .content-row .content-l .title p{
+  line-height: 4.1666667vw;
+  text-indent: 1.25vw;
+ }
+ .privateCapital .content-row .content-c .title p{
+   color: #fff;
+   position: relative;
+ }
+ .privateCapital .content-row .content-c .title p span{
+  color: #9b9dae;
+  font-size: 0.72916667vw;
+  font-weight: normal;
+}
+.privateCapital .content-row .content-c .title p .more{
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #1cfafe;
+  font-size: 0.72916667vw;
+  font-weight: normal;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+.privateCapital .content-row .content-c .title p .more img{
+  margin-left: 0.625vw;
+  width: 0.72916667vw;
+}
+.privateCapital .content-row .content-c{
+  width: 38.5416667vw;
+}
+.privateCapital .content-row .content-c .map-wrap{
+  height: 33.333333vw;
+  margin-bottom: 1.0416667vw;
+}
+.privateCapital .content-row .content-c .table-wrap{
+  height: 15.625vw;
+  background-image: url(../images/privateCapital/bottom-bg.png);
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+.privateCapital .content-row .content-c .table-wrap table{
+  margin-top: 1.0416667vw;
+}
+.privateCapital .content-row .content-c .table-wrap table thead{
+  border-top: 1px solid #0c3c7f;
+  border-bottom: 1px solid #0c3c7f;
+}
+.privateCapital .content-row .content-c .table-wrap table th{
+  height: 2.0833333vw;
+  background: rgba(22, 150, 255, .06);
+  border: 0;
+  font-size: 0.625vw;
+  font-weight: bold;
+  color: #58b2ff;
+}
+.privateCapital .content-row .content-c .table-wrap table td{
+  height: 2.5vw;
+  border: 0;
+  font-size: 0.625vw;
+  font-weight: bold;
+  background: none;
+  border-bottom: 1px solid #2d3866;
+}
+.privateCapital .content-row .content-c .table-wrap table td.invest{
+  color: #ffc30d;
+}
+.privateCapital .content-row .content-c .table-wrap table td.time{
+  color: #0dfff1;
+}
+.privateCapital .content-row .content-c .table-wrap table tr td:nth-of-type(2){
+  width: 5.72916667vw;
+}
+.privateCapital .content-row .content-c .table-wrap table td .name{
+  width: 5.72916667vw;
+}

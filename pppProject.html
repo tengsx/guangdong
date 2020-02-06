@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>广东省投资项目管理服务平台</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/t.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/echarts.js"></script>
+	<script src="js/guangdong.js"></script>
+  <script src="js/huizhou.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=YhpDkDY18AhmUAcT9UKdiDQ7ojZKCSF0"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+</head>
+<body class="project">
+	<div class="container">
+		<div class="header">
+			<div class="sys sys-stop">
+				
+			</div>
+			<div class="sys sys-tab">
+				<span>当前系统 </span>
+		        <select name="" id="select-molde" onchange="chooseModlue(this)">
+					<option value="0">粤港澳大湾区项目展示</option>
+			          <option value="1">一核一带一区项目展示</option>
+			          <option value="2">民间资本推荐项目展示</option>
+			          <option value="3" selected>PPP项目展示</option>
+			          <option value="4">补短板项目展示</option>
+				</select>
+			</div>
+			<div class="sys sys-time">
+				<span id="time"></span>
+      </div>
+      <div class="sys sys-back" onclick="backTo()">
+        <img src="images/home.png" alt="">
+        <span>主页</span>
+			</div>
+		</div>
+	<div class="content">
+		<div class="content-top">
+			<div class="top-LL">
+				<div class="item pro-invest">
+          <p class="item-title">总览 </p>
+          <div class="pandect">
+      				<div class="item-bg">
+      					<img src="images/pppProject/pandect-bg.png"  />
+          				<p>基础库</p>
+          				<p class="item-num">
+          					<span><span id="n1">206</span> 个</span>
+          					<span><span id="n2">2631</span> 亿元</span>
+          				</p>
+          			</div class="item-bg">
+          			<div class="item-bg">
+          				<img src="images/pppProject/pandect-bg.png"  />
+          				<p>推介库</p>	
+          				<p class="item-num">
+          					<span><span id="n3">206</span> 个</span>
+          					<span><span id="n4">2631</span> 亿元</span>
+          				</p>
+          			</div>
+          			<div class="item-bg">
+          				<img src="images/pppProject/pandect-bg.png"  />
+          				<p>公示库</p>
+          				<p class="item-num">
+          					<span><span id="n5">206</span> 个</span>
+          					<span><span id="n6">2631</span> 亿元</span>
+          				</p>
+          			</div>
+          			<div class="item-bg">
+          				<img src="images/pppProject/pandect-bg.png"  />
+          				<p>资产库</p>
+          				<p class="item-num">
+          					<span><span id="n7">206</span> 个</span>
+          					<span><span id="n8">2631</span> 亿元</span>
+          				</p>
+          			
+          			</div>
+          		</div>
+				</div>
+				<div class="item pro-invest">
+          			<p class="item-title">全省赋码统计-TOP5 </p>
+					<div class="item-sort">
+						<span class="sort-active">按行业</span><span>按区域</span>
+					</div>
+					<div class="item-echarts">
+						<div class="sort" id="industry"></div>
+						<div class="sort hide" id="district"></div>
+					</div>
+				</div>
+				<div class="item pro-invest">
+          			<p class="item-title">全省行业投资-TOP5 </p>
+					<div class="item-table">
+						<table class="tab" style="width: 100%">
+							<thead>
+								<tr>
+									<td>
+										<span>排名</span>
+									</td>
+									<td>
+										<span>行业</span>
+									</td>
+									<td>
+										<span>项目数(个)</span>
+									</td>
+									<td>
+										<span>投资额（亿元）</span>
+									</td>
+									<td>
+										<span>投资占比</span>
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="tab1">
+											<span>1</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab2">
+											<span>建筑业</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab3">
+											<span>666</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab4">
+											<span>5553.1</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab5">
+											<span>58.3%</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="tab1">
+											<span>2</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab2">
+											<span>交通运输业</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab3">
+											<span>571</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab4">
+											<span>4354.4</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab5">
+											<span>48.6%</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="tab1">
+											<span>3</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab2">
+											<span>制造业</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab3">
+											<span>342</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab4">
+											<span>2134</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab5">
+											<span>35%</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="tab1">
+											<span>4</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab2">
+											<span>科学行业</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab3">
+											<span>232</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab4">
+											<span>153</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab5">
+											<span>25.1%</span>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="tab1">
+											<span>5</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab2">
+											<span>水利环境和公共设备</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab3">
+											<span>112</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab4">
+											<span>89.9</span>
+										</div>
+									</td>
+									<td>
+										<div class="tab5">
+											<span>5.1%</span>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="top-l">
+				<div class="pro-map item content-bg">
+					
+				  <div class="gd-total">
+			          <div class="total-active">
+			            <p class="total-sum" id="item1">367</p>
+			            <p class="map-sum-title">全省项目总数(个)  </p>
+			          </div>
+			          <div>
+			            <p class="total-sum" id="item2">72335.4</p>
+			            <p class="map-sum-title">全省投资总额(亿元)</p>
+			          </div>
+		          </div>
+					
+		          <div class="data-tab map-tab">
+		            <div class="item active">
+		              <span>3D</span>
+		            </div>
+		            <div class="item">
+		              <span>卫星</span>
+		            </div>
+		          </div>
+		          <!-- <div class="map-zoom">
+		            <span></span>
+		            <span></span>
+		            <span>100%</span>
+		          </div> -->
+		          <div class="map-back" onclick="mapBack()">
+		            <img src="images/centralInvest/map-back.png" alt="">
+		            <span>全省地图</span>
+		            <img src="images/centralInvest/map.png" alt="">
+		          </div>
+              <div class="data-tab data-area">
+                <span>当前：</span>
+                <span id="mapArea">广东省</span>
+              </div>
+              <div class="year-tab">
+                <div class="year-tab-wrap"> 
+                  <div class="year-tab-btn year-tab-left" onclick="yearTab('left')"></div>
+                  <div class="year-tab-btn year-tab-rigth" onclick="yearTab('right')"></div>
+                  <div class="year-tab-conten">
+                    <ul>
+                      <li class="year-tab-l">2018</li>
+                      <li class="year-tab-cur">2019</li>
+                      <li class="year-tab-r">2020</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+		          <div class="map-wrap" style="width: 100%;height: 100%;">
+		            <div id="map" style="width: 100%;height: 100%;"></div>
+		          </div>
+		          <div class="bmap-wrap">
+		            <div id="bmap" style="width: 100%;height: 100%"></div>
+		          </div>
+				</div>
+			</div>
+			<div class="top-r rppp">
+				<div class="item pro-status province leftTop-bg">
+					<p class="item-title">全省区域统计-TOP5</p>
+					<div id="projectNum"></div>
+					<div id="investBrow"></div>
+				</div>
+				<div class="item pro-invest">
+          			<p class="item-title">运作模式统计</p>
+					<div class="mode" style="width: 100%; height: 100%;">
+						<img src="images/pppProject/mode-bg.png" alt="" />
+						<div class="mode-center" id="home">
+							<div class="mode-content" id="menu_list">
+								<div class="item-mode">其他<br><span id="item1">3004个</span></div>
+								<div class="item-mode">ROT<br><span id="item2">3004个</span></div>
+								<div class="item-mode">BOO<br><span id="item3">3004个</span></div>
+								<div class="item-mode">BOOT<br><span id="item4">3004个</span></div>
+								<div class="item-mode">TOT<br><span id="item5">3004个</span></div>
+								<div class="item-mode">O&M<br><span id="item6">3004个</span></div>
+								<div class="item-mode">BOOT<br><span id="item7">3004个</span></div>
+							</div>
+							<div class="mode-sum"><span id="modeSum">2543</span><br>项目总数</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script src="js/common.js"></script>
+	<script>
+		
+		 var totals =  $(".gd-total>div");
+        totals.click(function(){
+            $(this).addClass("total-active").siblings().removeClass("total-active");
+        });
+        
+		var home = document.getElementById("home");
+		var imgs = document.getElementById("menu_list").getElementsByTagName("div");
+//		半径
+		var c = fontSize(1.4);
+				
+		for(var i=0;i<imgs.length;i++){
+			imgs[i].style.left=-getPoint(c,i*180/(imgs.length-1)).x+"px";
+			imgs[i].style.top=-getPoint(c,i*180/(imgs.length-1)).y+"px";
+		}
+
+		//根据第三边和角度换算出坐标
+		//角度转弧度   角度*π/180 =弧度
+		function getPoint(c,deg){
+			var a = Math.round(Math.sin(deg*Math.PI/180)*c)-30;
+			var b = Math.round(Math.cos(deg*Math.PI/180)*c);
+			return {x:b,y:a};
+		}
+			
+		//全省赋码统计-TOP5  按区域和按行业切换
+	   var itemSort =  $(".item-sort span");
+        itemSort.click(function(){
+            $(this).addClass("sort-active").siblings().removeClass("sort-active");
+            var proj = itemSort.index(this);
+            $(".sort").eq(proj).show().siblings().hide();
+            var index = $(this).index();
+            if(index == "1"){
+            	districtOrient(allData[0][0].district[0]);	
+			}else {
+				industryOrient(allData[0][0].industry[0]);
+				
+            }
+        });
+        var lock = true;
+          itemSort.click(function(){
+          	lock = !lock;
+          
+	        });
+			function Mat3k(){
+				return parseInt(Math.random()*3000);
+			}
+			function Mat1b(){
+				return parseInt(Math.random()*100);
+			}
+			function Matxy(y,x){
+				return parseInt(Math.random() * (x - y + 1) + y);
+			}
+			// 循环生成随机数
+			var guangdongData = []
+			for(var i=0; i<3; i++){
+				map2 = [{
+					 industry:[
+						[Matxy(800,1000),Matxy(600,800),Matxy(400,600),Matxy(200,400),Matxy(0,200)]
+					],
+					district:[
+						[Matxy(800,1000),Matxy(600,800),Matxy(400,600),Matxy(200,400),Matxy(0,200)]
+					],
+					 projectNum:[
+						[Matxy(800,1000),Matxy(600,800),Matxy(400,600),Matxy(200,400),Matxy(0,200)]
+					],
+					investBrow:[
+						[Matxy(800,1000),Matxy(600,800),Matxy(400,600),Matxy(200,400),Matxy(0,200)]
+					],
+					workStatus:{
+						item1: Mat3k(),
+						item2: Mat3k(),
+						item3: Mat3k(),
+						item4: Mat3k(),
+						item5: Mat3k(),
+						item6: Mat3k(),
+						item7: Mat3k(),
+						n1: Mat3k(),
+						n2: Mat3k(),
+						n3: Mat3k(),
+						n4: Mat3k(),
+						n5: Mat3k(),
+						n6: Mat3k(),
+						n7: Mat3k(),
+						n8: Mat3k(),
+						modeSum: Matxy(1000,3000)
+					},
+					mapData:convertData(guangdongMap),
+					map:{
+						xq: Mat3k(),
+						xd: Mat3k(),
+						dw: Mat3k(),
+						zf: Mat3k(),
+						wc: Mat1b()+' %'
+					}
+				}]
+				guangdongData.push(map2)
+			}
+			
+			var huizhouData=[];
+			for(var i=0; i<3; i++){
+				map1 =  [{
+					 industry:[
+						[Matxy(800,1000),Matxy(600,800),Matxy(400,600),Matxy(200,400),Matxy(0,200)]
+					],
+					district:[
+						[Matxy(800,1000),Matxy(600,800),Matxy(400,600),Matxy(200,400),Matxy(0,200)]
+					],
+					 projectNum:[
+						[Matxy(800,1000),Matxy(600,800),Matxy(400,600),Matxy(200,400),Matxy(0,200)]
+					],
+					investBrow:[
+						[Matxy(800,1000),Matxy(600,800),Matxy(400,600),Matxy(200,400),Matxy(0,200)]
+					],
+					workStatus:{
+						item1: Mat3k(),
+						item2: Mat3k(),
+						item3: Mat3k(),
+						item4: Mat3k(),
+						item5: Mat3k(),
+						item6: Mat3k(),
+						item7: Mat3k(),
+						n1: Mat3k(),
+						n2: Mat3k(),
+						n3: Mat3k(),
+						n4: Mat3k(),
+						n5: Mat3k(),
+						n6: Mat3k(),
+						n7: Mat3k(),
+						n8: Mat3k(),
+						modeSum: Matxy(1000,3000)
+					},
+					mapData:convertData(guangdongMap),
+					map:{
+						xq: Mat3k(),
+						xd: Mat3k(),
+						dw: Mat3k(),
+						zf: Mat3k(),
+						wc: Mat1b()+' %'
+					}
+				}]
+				huizhouData.push(map1)
+			}
+			
+			var geoCoordMap,allData,area;
+			geoCoordMap=guangdongMap;
+			allData=guangdongData;
+			mapArea='guangdong';
+			var timeIndex=1;
+			var timer;
+			tabData(1);
+      autoPlay();
+      //自动轮播
+      function autoPlay(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+          yearTab('right');
+        },5000);
+			}
+			//数据切换
+			function tabData(index){
+				if(lock){
+					industryOrient(allData[index][0].industry[0]);
+				}else {
+					districtOrient(allData[index][0].district[0]);	
+				}
+				projectNumChart(allData[index][0].projectNum[0]);
+				investBrowChart(allData[index][0].investBrow[0]);
+				map(mapArea,allData[index][0].map,allData[index][0].mapData);
+				$('#item1').text(allData[index][0].workStatus.item1)
+				$('#item2').text(allData[index][0].workStatus.item2)
+				$('#item3').text(allData[index][0].workStatus.item3)
+				$('#item4').text(allData[index][0].workStatus.item4)
+				$('#item5').text(allData[index][0].workStatus.item5)
+				$('#item6').text(allData[index][0].workStatus.item6)
+				$('#item7').text(allData[index][0].workStatus.item7)
+				$('#modeSum').text(allData[index][0].workStatus.modeSum)
+				$('#n1').text(allData[index][0].workStatus.n1)
+				$('#n2').text(allData[index][0].workStatus.n2)
+				$('#n3').text(allData[index][0].workStatus.n3)
+				$('#n4').text(allData[index][0].workStatus.n4)
+				$('#n5').text(allData[index][0].workStatus.n5)
+				$('#n6').text(allData[index][0].workStatus.n6)
+				$('#n7').text(allData[index][0].workStatus.n7)
+				$('#n8').text(allData[index][0].workStatus.n8)
+      };
+      //年份切换
+      function yearTab(type){
+        var item=$('.year-tab-conten ul li')
+        var length=item.length;
+        item.removeClass('year-tab-cur');
+        if(type=='right'){
+          timeIndex++
+          if(timeIndex>length-1){
+            timeIndex=0
+          }    
+        }else{
+          timeIndex--
+          if(timeIndex<0){
+            timeIndex=length-1
+          }
+        }
+        item.eq(timeIndex).addClass('year-tab-cur');
+        tabData(timeIndex);  
+      }
+      //地图3d与卫星切换
+      $('.map-tab .item').click(function(){
+				var index=$(this).index();
+				if(index==0){
+          $('.bmap-wrap').css('z-index','-1');
+        }else{
+          loadBaiDuMap(mapArea);
+          $('.bmap-wrap').css('z-index','20')
+        }
+				$(this).addClass('active').siblings().removeClass('active');
+      })
+      //轮播暂停与开启
+			$('.sys-stop').click(function(){
+				var active=$(this).hasClass('active');
+				if(!active){
+					$(this).addClass('active');
+					clearInterval(timer);
+				}else{
+					$(this).removeClass('active');
+					autoPlay();
+				}
+      })
+      //返回主页
+      function backTo(){
+        window.location.href='menu.html';
+      }
+      function mapBack(){
+        geoCoordMap=guangdongMap;
+        allData=guangdongData;
+        mapArea='guangdong';
+        $('#mapArea').text('广东省');
+        tabData(timeIndex);
+      }
+	    //定义为全局变量进行判断避免图表dom重新加载
+	    var myIndustryOption,myProjectNumOption,myInvestBrowOption,myMapOption,myDistrictOption ;
+	  
+	    //全省赋码统计-TOP5 按行业
+		function industryOrient(data){
+			console.log(data)
+			var dom=document.getElementById("industry");
+			if(myIndustryOption==''||myIndustryOption==undefined){
+	    		myIndustryOption=echarts.init(dom);
+	    	}
+			var option={
+			     tooltip: {
+			        trigger: 'axis',
+			        axisPointer: {
+			            type: 'line',
+			            lineStyle: {
+			                opacity: 0
+			            }
+			        },
+			        formatter: '{b}'
+			    },
+			       grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+			    xAxis: {
+			        data: ['建筑业', '交通运输业', '制造业', '科学行业', '水利环境和公共设备'],
+			        axisLine: {
+			            lineStyle: {
+			                color: '#0d3dbb'
+			            }
+			        },
+			           axisTick: {
+			            show: false
+			        },
+			        axisLabel: {
+			        	formatter: function(value) {
+			             	if (value.length > 4) {
+                                return value.substring(0, 4) + ".."; //最多显示5位，多余用...代替
+                            } else {
+                                return value;
+                            }
+			             },
+			            color: '#fff',
+			            fontSize: fontSize(0.12)
+			        }
+			    },
+			    yAxis: {
+			        name: "（个）",
+			        nameTextStyle: {
+			            color: '#fff',
+			            fontSize: fontSize(0.12)
+			        },
+			        axisLine: {
+			          show: false,
+			        },
+			        axisLabel: {
+			            color: '#fff',
+			            fontSize: fontSize(0.14)
+			        },
+			       splitLine: {
+			            lineStyle: {
+			                 type:'dashed',
+			                 color: '#1b3477'
+			            }
+			        },
+			
+			    },
+			    series: [{
+			        type: 'bar',
+			        barWidth: fontSize(0.18),
+			        itemStyle:{
+			            normal:{
+			                color:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+			                    offset: 0,
+			                    color: '#2a8af8'
+			                    //   color: '#a095ff'
+			                }, {
+			                    offset: 1,
+			                    color: '#0b2bff'
+			                    //  color: '#5105ff'
+			                }], false),
+			                 barBorderRadius: 30,
+			            }
+			        },
+			         label: {
+			            normal: {
+			                show: true,
+			                lineHeight: fontSize(0.22),
+			                width: fontSize(0.6),
+			                height: fontSize(0.2),
+			                backgroundColor: 'rgba(0,160,221,0.1)',
+			                borderRadius: 200,
+			                position: [fontSize(-0.08), fontSize(-0.5)],
+			                distance: 1,
+			                formatter: [
+			                    '    {d|●}',
+			                    ' {a|{c}}     \n',
+			                    '    {b|}'
+			                ].join(','),
+			                rich: {
+			                    d: {
+			                        color: '#3CDDCF',
+			                    },
+			                    a: {
+			                        color: '#fff',
+			                        align: 'center',
+			                    },
+			                    b: {
+			                        width: 1,
+			                        height: fontSize(0.3),
+			                        borderWidth: 1,
+			                        borderColor: '#234e6c',
+			                        align: 'left'
+			                    },
+			                }
+			            }
+			        },
+			        data: data
+			    }
+			    ]
+			};
+			myIndustryOption.setOption(option);
+		}
+		//全省赋码统计-TOP5 按区域
+		function districtOrient(data){
+			var dom=document.getElementById("district");
+			if(myDistrictOption==''||myDistrictOption==undefined){
+	    		myDistrictOption=echarts.init(dom);
+	    	}
+			var option={
+			       tooltip: {
+			        trigger: 'axis',
+			        axisPointer: {
+			            type: 'line',
+			            lineStyle: {
+			                opacity: 0
+			            }
+			        },
+			        formatter: '{b}'
+			    },
+			       grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+			    xAxis: {
+			        data: ['东莞', '佛山', '深圳', '潮州', '广州'],
+			        axisLine: {
+			            lineStyle: {
+			                color: '#0d3dbb'
+			            },
+			        },
+			           axisTick: {
+			            show: false
+			        },
+			        axisLabel: {
+			        	formatter: function(value) {
+			             	if (value.length > 4) {
+                                return value.substring(0, 4) + ".."; //最多显示5位，多余用...代替
+                            } else {
+                                return value;
+                            }
+			             },
+			            color: '#fff',
+			            fontSize: fontSize(0.12)
+			        }
+			    },
+			    yAxis: {
+			        name: "（个）",
+			        nameTextStyle: {
+			            color: '#fff',
+			            fontSize: fontSize(0.12)
+			        },
+			        axisLine: {
+			          show: false,
+			        },
+			        axisLabel: {
+			            color: '#fff',
+			            fontSize: fontSize(0.14)
+			        },
+			       splitLine: {
+			            lineStyle: {
+			                 type:'dashed',
+			                 color: '#1b3477'
+			            }
+			        },
+			
+			    },
+			    series: [{
+			        type: 'bar',
+			        barWidth: fontSize(0.18),
+			        itemStyle:{
+			            normal:{
+			                color:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+			                    offset: 0,
+//			                    color: '#2a8af8'
+			                       color: '#a095ff'
+			                }, {
+			                    offset: 1,
+//			                    color: '#0b2bff'
+			                      color: '#5105ff'
+			                }], false),
+			                 barBorderRadius: 30,
+			            }
+			        },
+			         label: {
+			            normal: {
+			                show: true,
+			                lineHeight: fontSize(0.22),
+			                width: fontSize(0.6),
+			                height: fontSize(0.2),
+			                backgroundColor: 'rgba(0,160,221,0.1)',
+			                borderRadius: 200,
+			                position: [fontSize(-0.08), fontSize(-0.5)],
+			                distance: 1,
+			                formatter: [
+			                    '    {d|●}',
+			                    ' {a|{c}}     \n',
+			                    '    {b|}'
+			                ].join(','),
+			                rich: {
+			                    d: {
+			                        color: '#3CDDCF',
+			                    },
+			                    a: {
+			                        color: '#fff',
+			                        align: 'center',
+			                    },
+			                    b: {
+			                        width: 1,
+			                        height: fontSize(0.3),
+			                        borderWidth: 1,
+			                        borderColor: '#234e6c',
+			                        align: 'left'
+			                    },
+			                }
+			            }
+			        },
+			        data: data
+			    }
+			    ]
+			};
+			myDistrictOption.setOption(option);
+		}
+		
+		//全省区域统计 （项目数）
+		function projectNumChart(data){
+			var sum = 0;
+			for (var i = 0; i < data.length; i++) {
+				sum += data[i]
+			}
+			var dom=document.getElementById("projectNum");
+			if(myProjectNumOption==''||myProjectNumOption==undefined){
+	    		myProjectNumOption=echarts.init(dom);
+	    	}
+			var option={
+			    grid: {
+			        top: '35%',
+			        left: '5%',
+			        right: '5%',
+			        bottom: '10%',
+			        containLabel: true,
+			    },
+			      title: {
+				        text: '项目数',
+				        subtext: sum+'个',
+				         subtextStyle: {
+			                color: '#15faff',
+			                // color: '#ffc000',
+			                fontSize: fontSize(0.24)
+			            },
+				        textStyle: {
+				        	 align: 'center',
+				            color: '#fff',
+				            fontSize: fontSize(0.14),
+				        },
+				        top: '0%',
+				        left: '3%',
+				    },
+			      legend: {
+			      	icon:'image://images/pppProject/icon.png',
+			        data: ["项目数"],
+			        top: "5%",
+			        right: '5%',
+			        itemWidth: 27,//图标宽
+			        itemHeight: 9,//图标高
+			        textStyle: {
+			            color: "#ffffff"
+			        }
+			    },
+			    xAxis: {
+			        type: 'category',
+			        boundaryGap: false,
+			        data:  ['东莞', '佛山', '深圳', '潮州', '广州'],
+			        axisLabel: {
+			            margin: fontSize(0.3),
+			            color: '#ffffff',
+			            fontSize: fontSize(0.14)
+			        },
+			        axisLine: {
+			            show: false
+			        },
+			        axisTick: {
+			            show: true,
+			            length: 6,
+			            lineStyle: {
+			                color: "#15faff",
+			                // color: "#ffc000",
+			                width: 4,
+			            }
+			        },
+			        splitLine: {
+			           show: false,
+			        }
+			    },
+			    yAxis: [{
+			        type: 'value',
+			        axisLabel: {
+			            margin: fontSize(0.4),
+			            color: '#ffffff',
+			            fontSize: fontSize(0.14)
+			        },
+			
+			        axisTick: {
+			         show: false,
+			        },
+			        splitLine: {
+			           show: false,
+			        },
+			        axisLine: {
+			            show: false,
+			        }
+			    }],
+			    series: [{
+			        name: '项目数',
+			        type: 'line',
+			        smooth: true, //是否平滑曲线显示
+			        showAllSymbol: true,
+			        symbol: 'circle',
+			        symbolSize: 6,
+			        lineStyle: {
+			            normal: {
+			                color: "#15eef6", // 线条颜色
+			                // color: '#ffc000',
+			            },
+			        },
+			        label: {
+			            show: true,
+			            position: 'top',
+			            textStyle: {
+			                color: '#fff',
+			            }
+			        },
+			        itemStyle: {
+			            color: "#15faff",
+			            // color: "#ffc000",
+			            borderColor: "#fff",
+			            borderWidth: 3
+			        },
+			        tooltip: {
+			            show: false
+			        },
+			        areaStyle: {
+			            normal: {
+			                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+			                        offset: 0,
+			                        color: 'rgba(21, 250, 255, .9)'
+			                    },
+			                    {
+			                        offset: 1,
+			                        color: 'rgba(15, 30, 96, .1)'
+			                    }
+			                ], false),
+			            }
+			        },
+			        data: data
+			    }]
+			};
+        	myProjectNumOption.setOption(option);
+        	/*myIndustryOption.on('mouseover', function (params) {
+				clearInterval(time);
+			});*/
+		}
+		//全省区域统计 （投资额）
+		function investBrowChart(data){
+				var sum = 0;
+			for (var i = 0; i < data.length; i++) {
+				sum += data[i]
+			}
+			var dom=document.getElementById("investBrow");
+			if(myInvestBrowOption==''||myInvestBrowOption==undefined){
+	    		myInvestBrowOption=echarts.init(dom);
+	    	}
+			var option={
+			    grid: {
+		          	top: '35%',
+			        left: '5%',
+			        right: '5%',
+			        bottom: '10%',
+			        containLabel: true,
+			    },
+			      title: {
+				        text: '投资额',
+				        subtext: sum+'亿元',
+				         subtextStyle: {
+			//              color: '#15faff',
+			                   color: '#ffc000',
+			                fontSize: fontSize(0.24)
+			            },
+				        textStyle: {
+				        	 align: 'center',
+				            color: '#fff',
+				            fontSize: fontSize(0.14),
+				        },
+				        top: '0%',
+				        left: '3%',
+				    },
+			      legend: {
+			      	icon:'image://images/pppProject/icon2.png',
+			        data: ["投资额"],
+			        top: "5%",
+			        right: '5%',
+			        itemWidth: 27,//图标宽
+			        itemHeight: 9,//图标高
+			        textStyle: {
+			            color: "#ffffff"
+			        }
+			    },
+			    xAxis: {
+			        type: 'category',
+			        boundaryGap: false,
+			        data:  ['东莞', '佛山', '深圳', '潮州', '广州'],
+			        axisLabel: {
+			            margin: fontSize(0.3),
+			            color: '#ffffff',
+			            fontSize: fontSize(0.14)
+			        },
+			        axisLine: {
+			            show: false
+			        },
+			        axisTick: {
+			            show: true,
+			            length: 6,
+			            lineStyle: {
+			//              color: "#15faff",
+			                   color: "#ffc000",
+			                width: 4,
+			            }
+			        },
+			        splitLine: {
+			           show: false,
+			        }
+			    },
+			    yAxis: [{
+			        type: 'value',
+			        axisLabel: {
+			            margin: 40,
+			            color: '#ffffff',
+			            fontSize: fontSize(0.14)
+			        },
+			
+			        axisTick: {
+			         show: false,
+			        },
+			        splitLine: {
+			           show: false,
+			        },
+			        axisLine: {
+			            show: false,
+			        }
+			    }],
+			    series: [{
+			        name: '投资额',
+			        type: 'line',
+			        smooth: true, //是否平滑曲线显示
+			        showAllSymbol: true,
+			        symbol: 'circle',
+			        symbolSize: 6,
+			        lineStyle: {
+			            normal: {
+			//              color: "#15eef6", // 线条颜色
+			                   color: '#ffc000',
+			            },
+			        },
+			        label: {
+			            show: true,
+			            position: 'top',
+			            textStyle: {
+			                color: '#fff',
+			            }
+			        },
+			        itemStyle: {
+			//          color: "#15faff",
+			               color: "#ffc000",
+			            borderColor: "#fff",
+			            borderWidth: 3
+			        },
+			        tooltip: {
+			            show: false
+			        },
+			        areaStyle: {
+			            normal: {
+			                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+			                        offset: 0,
+			                        color: 'rgba(188, 140, 0, .9)'
+			                    },
+			                    {
+			                        offset: 1,
+			                        color: 'rgba(15, 30, 96, .1)'
+			                    }
+			                ], false),
+			            }
+			        },
+			        data: data
+			    }]
+			};
+        	myInvestBrowOption.setOption(option);
+			
+	}
+   // 地图投资数据展示
+		function graphic(data){
+		    	return [
+                    
+              ]
+		    }
+		function map(area,data,mapData){
+			if(myMapOption==''||myMapOption==undefined){
+	    		myMapOption= echarts.init(document.getElementById('map'));
+        }
+      for(var i=0;i<mapData.length;i++){
+        var temp=mapData[i].value[2];
+        mapData[i].value[2]=mapData[i].invest;
+        mapData[i].invest= temp;
+      }
+			var option={
+		    	title:{
+		    		show:false
+		    	},
+		    	tooltip : {
+			        trigger: 'item',
+			        textStyle:{
+			        	fontSize:fontSize(.18)
+			        }
+			    },
+			    visualMap: {
+            min: 0,
+            max: 1000,
+            right:'5%',
+            bottom:'20%',
+            seriesIndex:0,
+            //text: ['高', '低'], // 文本，默认为数值文本
+            calculable: true,
+            color:['#f23501','#fdc003','#1f58cf','#2c4583'],
+            textStyle:{
+              color:'#fff'
+            },
+            formatter:function(value){
+              return value+'亿元'
+            } 
+			    },
+			    graphic:graphic(data),
+				geo: [
+					  {
+              map: area,
+              layoutCenter:['50%','50%'],
+              layoutSize:'80%',
+              z:100,
+              label: {
+                show: true,
+                color:'#fff',
+                fontSize:'0.7291667vw'
+              },
+              itemStyle: {
+                  normal: {
+                    borderColor: '#ffffff',
+                    borderWidth:2,
+                  },
+				        }
+			        },
+			        {
+                map: area,
+				        layoutCenter:['50.5%','50.5%'],
+				        layoutSize:'80%',
+				        z:4,
+				        label: {
+                  emphasis: {
+                      show: false
+                  }
+				        },
+				        roam: false,
+				        itemStyle: {
+				            normal: {
+				            	areaColor: '#34519f',
+				                borderColor: '#1f61cf',
+				                borderWidth:2,
+				            },
+				            emphasis: {
+				            	areaColor: '#081939',
+				                borderColor: '#00fef9'
+				            }
+				        }
+			        },
+			        {
+                map: area,
+               
+				        layoutCenter:['51%','51%'],
+				        layoutSize:'80%',
+				        z:3,
+				        label: {
+				            emphasis: {
+                      show: false
+				            }
+				        },
+				        roam: false,
+				        itemStyle: {
+				            normal: {
+				                areaColor: '#34519f',
+				                borderColor: '#1f61cf',
+				                shadowColor:'#0e30bd',
+				                borderWidth:2,
+				                shadowOffsetX:'5',
+				                shadowOffsetY:'5',
+				                shadowBlur:10,
+				            },
+				            emphasis: {
+				                areaColor: '#081939',
+				                borderColor: '#00fef9'
+				            }
+				        }
+			        }
+				  ],
+		    	series: [
+		    		    {
+				          center: "center",
+				          data: mapData,
+                  geoIndex:0,
+                  roam: true,
+                  zoom: 1,
+				          type: "map",
+				          tooltip : {
+						        trigger: 'item',
+						        formatter:function(data){
+						        	return data.name +'<br>项目个数：'+ data.data.invest +'个<br>投资额：'+data.data.value[2]+'亿元';
+						        }
+						      },
+				        },         
+		    		]
+		    	}
+          myMapOption.setOption(option,true);
+          myMapOption.off('dblclick');
+          myMapOption.off('click');
+				  myMapOption.on("mouseover", function (params){
+            myMapOption.dispatchAction({
+              type: 'downplay'
+            })
+          });
+          if(area=='huizhou'){
+            myMapOption.on("click", function (params){
+              clearInterval(time);
+              openProjectList();
+              $('.sys-stop').addClass('active')
+          });
+          }
+				  myMapOption.on("dblclick", function (params){
+            if(params.name=='惠州市'){
+              clearInterval(time);
+              geoCoordMap=huizhouMap;
+              allData=huizhouData;
+              mapArea='huizhou';
+              $('#mapArea').text('惠州市');
+              tabData(timeIndex,mapType);
+              if(!$('.sys-stop').hasClass('active')){
+                autoPlay();
+              }
+            }
+          });
+      }
+      function loadBaiDuMap(area){
+        var mapCenter=[
+          {
+            name:'guangdong',
+            center:[113.291095,23.154976],
+            zoom:8
+          },
+          {
+            name:'huizhou',
+            center:[114.427128,23.120946],
+            zoom:11
+          }
+        ]
+        var map = new BMap.Map('bmap',{mapType:BMAP_HYBRID_MAP});
+        map.enableScrollWheelZoom(true); //启用滚轮放大缩小
+        for(var i=0;i< mapCenter.length;i++){
+          if(area==mapCenter[i].name){
+            map.centerAndZoom(new BMap.Point(mapCenter[i].center[0],mapCenter[i].center[1]),mapCenter[i].zoom);
+          }
+        }
+        //map.centerAndZoom(new BMap.Point(obj1, obj2), obj3);//地图中心点
+        //map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_SATELLITE_MAP ]}));//BMAP_HYBRID_MAP 右上角显示
+        map.setMaxZoom(12.5);//设置地图缩放最大级别
+        map.setMinZoom(6);//设置地图缩放最小级别
+        var b = new BMap.Bounds(new BMap.Point(108.97233,23.137962),new BMap.Point(118.0238,23.137962));
+          try {	
+            BMapLib.AreaRestriction.setBounds(map, b);
+          } catch (e) {
+            alert(e);
+          }//设定拖动区域
+        var provinces=['云南','湖南','江西','福建','台湾','海南','广西','贵州','浙江']
+        for(var i=0;i<provinces.length;i++){
+          getBoundary(provinces[i]);
+        }
+        function getBoundary(area){
+          var bdary = new BMap.Boundary();
+          bdary.get(area, function(rs){
+                //获取行政区域   
+              //map.clearOverlays();      //清除地图覆盖物       
+              var count = rs.boundaries.length; //行政区域的点有多少个
+              if (count === 0) {
+                  alert('未能获取当前输入行政区域');
+                  return ;
+              }
+              var pointArray = [];
+              for (var i = 0; i < count; i++) {
+                  var ply = new BMap.Polygon(rs.boundaries[i], { strokeWeight : 3,
+                  strokeOpacity : 0,
+                  strokeColor: 'rgb(0,0,0,0)', 
+                  fillColor:'rgba(0,0,0,0.9)'
+                }); //建立多边形覆盖物
+                  map.addOverlay(ply);  //添加覆盖物
+              }          
+          });
+        }
+        //添加地图标记点 
+        var point=new BMap.Point(113.916603,23.56265);
+        var markData={
+          mname:'测试项目一',
+          mbuild:'广东省广州市',
+          minvestment:'13123',
+          mmain:'111111111111111111'
+        }
+        addMarker(point,markData)
+        function addMarker(point,value){
+          var sContent =
+	    		"<h3 style='text-align:center;'>"+value.mname+"</h3><span>建设详细地点："+value.mbuild+"</span> </br>"+
+	    		"<span>总投资："+value.minvestment+" 亿元</span> </br>"+
+	    		"<span>建设内容："+value.mmain+"</span>"
+          var myIcon =new BMap.Icon('images/mark-01.png', new BMap.Size(40,58));
+          var opts = {
+            position : point,    // 指定文本标注所在的地理位置
+            offset   : new BMap.Size(10, -35)    //设置文本偏移量
+          }
+          var marker = new BMap.Marker(point,{icon:myIcon});
+          var infoWindows = new BMap.InfoWindow(sContent,opts);
+          map.addOverlay(marker);
+          addClickHandler(sContent,marker);
+            //图片加载完毕重绘infowindow
+            /*document.getElementById('imgDemo').onload = function (){
+              infoWindow.redraw();   //防止在网速较慢，图片未加载时，生成的信息框高度比图片的总高度小，导致图片部分被隐藏
+            } */
+            var opts = {
+              width : 250,     // 信息窗口宽度
+              height: 80,     // 信息窗口高度
+              title : "信息窗口" , // 信息窗口标题
+              enableMessage:true//设置允许信息窗发送短息
+			      };
+          function openInfo(content,e){
+            var p = e.target;
+            var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+            var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+            map.openInfoWindow(infoWindow,point); //开启信息窗口
+          }
+          function addClickHandler(content,marker){
+            marker.addEventListener("click",function(e){
+              openInfo(content,e)}
+            );
+          }
+        } 
+      }
+	</script>
+</body>
+</html>

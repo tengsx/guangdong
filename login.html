@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>广东省投资项目管理服务平台</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/t.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/Gs.js"></script>
+	<style type="text/css">
+	</style>
+</head>
+<body style="overflow: hidden;">
+	<div class="login">
+		<div class="Ldisc"></div>
+		<div class="disc-bg"></div>
+		<div class="Lheader"></div>
+		<div class="loginForm">
+			<div class="formInput">
+				<input class="FIT fuName" type="text" placeholder="用户名"/>
+				<input class="FIT fpWord" type="password" placeholder="密码"/>
+				<div class="FCode">
+					<input class="FIT code" type="text" placeholder="验证码"/>
+					<span class="verify">647M</span>
+				</div>
+				<div class="FRememb">
+					<input id="check" type="checkbox" class="FRcheck" />记住密码
+					<label for="check"></label>
+				</div>
+				<button type="button" class="styled-button" onclick="login()">
+					<span class="styled-button__real-text-holder">
+						<span class="styled-button__real-text">登 录</span>
+						<span class="styled-button__moving-block face">
+							<span class="styled-button__text-holder">
+								<span class="styled-button__text">登 录</span>
+							</span>
+						</span>
+						<span class="styled-button__moving-block back">
+							<span class="styled-button__text-holder">
+								<span class="styled-button__text">登 录</span>
+							</span>
+						</span>
+					</span> 
+				</button>
+			</div>
+		</div>
+		<div class="footer">
+			主办单位：广东省发展和改革委员会<br>
+			承办单位：广东省宏观经济信息分析中心<br>
+			技术支持：思创数码科技股份有限公司
+		</div>
+  </div>
+  <script>
+    function login(){
+      window.location.href='menu.html';
+    
+    }
+      $(document).Gs({
+    	oid:'.disc-bg',
+    	left: 10 //移动的距离，值越大  移动距离  越小
+    })
+  </script>
+</body>
+</html>

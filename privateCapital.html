@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>广东省投资项目管理服务平台</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/echarts.js"></script>
+	<script src="js/guangdong.js"></script>
+  <script src="js/huizhou.js"></script>
+  <script src="js/layer/layer.js"></script>
+</head>
+<body class="privateCapital">
+	<div class="container">
+		<div class="header">
+			<div class="sys sys-tab">
+				<span>当前系统 </span>
+        <select name="" id="select-molde" onchange="chooseModlue(this)">
+          <option value="0">粤港澳大湾区项目展示</option>
+          <option value="1">一核一带一区项目展示</option>
+          <option value="2" selected>民间资本推荐项目展示</option>
+          <option value="3">PPP项目展示</option>
+          <option value="4">补短板项目展示</option>
+				</select>
+			</div>
+			<div class="sys sys-time">
+				<span id="time"></span>
+      </div>
+      <div class="sys sys-back" onclick="backTo()">
+        <img src="images/home.png" alt="">
+        <span>主页</span>
+			</div>
+		</div>
+    <div class="content content-row">
+      <div class="content-l">
+        <div class="content-l-item" style="margin-bottom: 1.0416667vw;"> 
+          <div class="title">
+            <p>区域推介完成率排名</p>
+          </div>
+          <div class="e-wrap">
+            <div id="area" style="width: 100%;height: 100%"></div>
+          </div>
+        </div>
+        <div class="content-l-item"> 
+          <div class="title">
+            <p>民间资本库统计</p>
+          </div>
+          <div class="e-wrap">
+            <div id="industry" style="width: 100%;height: 100%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="content-c">
+        <div class="content-c-item">
+          <div class="map-wrap">
+            <div id="map" style="width: 100%;height: 100%;"></div>
+          </div>
+          <div class="table-wrap">
+            <div class="title">
+              <p>民间资本库统计 
+                <span>已完成吸引民间资本重点率与项目</span>
+                <span class="more">查看更多<img src="images/privateCapital/more.png" alt=""></span>
+              </p>
+            </div>
+            <table>
+              <thead>
+                <th>推介时间</th>
+                <th>项目名称</th>
+                <th>所属行业</th>
+                <th>建设地点</th>
+                <th>项目进展</th>
+                <th>总投资</th>
+                <th>项目建设情况</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2019-09-03</td>
+                  <td><div class="name">
+                    学前教育项目学前教育项目学前教育项目
+                  </div></td>
+                  <td>交通运输</td>
+                  <td>广州市</td>
+                  <td>公开推介</td>
+                  <td class="invest">51800</td>
+                  <td class="time">2019-01</td>
+                </tr>
+                <tr>
+                  <td>2019-09-03</td>
+                  <td>学前教育项目</td>
+                  <td>交通运输</td>
+                  <td>广州市</td>
+                  <td>公开推介</td>
+                  <td class="invest">51800</td>
+                  <td class="time">2019-01</td>
+                </tr>
+                <tr>
+                  <td>2019-09-03</td>
+                  <td>学前教育项目</td>
+                  <td>交通运输</td>
+                  <td>广州市</td>
+                  <td>公开推介</td>
+                  <td class="invest">51800</td>
+                  <td class="time">2019-01</td>
+                </tr>
+                <tr>
+                  <td>2019-09-03</td>
+                  <td>学前教育项目</td>
+                  <td>交通运输</td>
+                  <td>广州市</td>
+                  <td>公开推介</td>
+                  <td class="invest">51800</td>
+                  <td class="time">2019-01</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="content-l">
+        <div class="content-l-item"  style="margin-bottom: 1.0416667vw;"> 
+          <div class="title">
+            <p>区域总投资额、项目占比、排名</p>
+          </div>
+          <div class="e-wrap">
+            <div id="important" style="width: 100%;height: 100%"></div>
+          </div>
+        </div>
+        <div class="content-l-item"> 
+          <div class="title">
+            <p>所属行业投资额、项目数占比、排名</p>
+          </div>
+          <div class="e-wrap">
+            <div id="invest" style="width: 100%;height: 100%">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+	<script src="js/common.js"></script>
+	<script>
+			var guangdongData=[
+				{
+					areaInvest:[
+						[6,28,22,17,40,15,54],
+						[6,26,18,9,20,5,23]
+					],
+					industryInvest:[12462,7231,20422,23103,14344,15990,20120],
+          allInvest:[2930, 2781, 2561, 2313, 1809, 1629, 1383, 1093 ],
+					mapData:convertData(guangdongMap),
+					map:{
+						sum:356,
+						invest:3414.8,
+            completeInvest:3213.1
+					}
+				}
+			]
+			var huizhouData=[
+
+			]
+			var geoCoordMap,allData,area;
+			geoCoordMap=guangdongMap;
+			allData=guangdongData;
+			mapArea='guangdong';
+			var timeIndex=7;
+			var mapType=0,time;
+			tabData(0,0);
+      //autoPlay();
+      //自动轮播
+			function autoPlay(){
+				clearInterval(time);
+				time=setInterval(tab,5000);
+			}
+			function tab(){
+				timeIndex--
+				if(timeIndex<0){
+					timeIndex=7;
+				}
+				tabData(timeIndex,mapType);
+			}
+			//数据切换
+			function tabData(index,type){
+				areaInvest(allData[index].areaInvest);
+				capitalInvest(allData[index].industryInvest);
+        allInvest(allData[index].allInvest);
+        map(mapArea,allData[index].map,allData[index].mapData,type);
+        industryInvest(allData[index].industryInvest);
+			};
+      //轮播暂停与开启
+			$('.sys-stop').click(function(){
+				var active=$(this).hasClass('active');
+				if(!active){
+					$(this).addClass('active');
+					clearInterval(time);
+				}else{
+					$(this).removeClass('active');
+					autoPlay();
+				}
+      })
+      //打开地区项目列表
+      function openProjectList(){
+        layer.open({
+          type: 2, 
+          title:'惠城区项目列表',
+          skin: 'layui-layer-blue',
+          maxmin:true,
+          move: false,
+          area: ['70%', '80%'],
+          content: 'projectList.html',
+          cancel:function(){
+            autoPlay();
+            $('.sys-stop').removeClass('active');
+          }
+        });
+      }
+			//map数据转换
+		function convertData(data) {
+	        var res = [];
+	        for (var i = 0; i < data.length; i++) {
+	            res.push({
+	                name: data[i].name,
+	                value: [data[i].coord[0], data[i].coord[1], Math.ceil(Math.random() * 100)],
+	                invest:Math.ceil(Math.random() * 1000)
+	            });
+	        }
+	        return res;
+	    };
+	    //定义为全局变量进行判断避免图表dom重新加载
+	    var myAreaOption,myMapOption,myIndustryOption,myProjectOption,myCapitalOption;
+	    //区域完成推介率
+		function areaInvest(data){
+			var dom=document.getElementById("area");
+			if(myAreaOption==''||myAreaOption==undefined){
+	    		myAreaOption=echarts.init(dom);
+	    	}
+	    var option={
+				title:{
+					show:false,
+					textStyle: {
+						color:'white',
+					}
+				},
+				legend: {
+					top:'2%',
+					right:'10',
+					itemGap: 20,
+					itemWidth:14,
+					show: true, 
+					data: ['推介总数','已完成推介数'],
+          textStyle:{
+            fontSize: fontSize(0.14),
+            color:'#fff',
+            fontWeight:'blod',
+          }     
+				},
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'shadow'
+					},
+					textStyle:{
+			      fontSize:fontSize(0.18)
+			    }
+        },
+				xAxis: {
+					type: 'category',
+					//boundaryGap: false,
+					axisTick: {
+						show: false
+					},
+					axisLabel: {
+					  interval:0,   
+             color: '#a4a7aa',
+             fontSize:fontSize(.14)
+			    },
+					data:[
+            {value:'东莞'},
+            {value:'佛山'},
+            {value:'潮州'},
+            {value:'深圳'},
+            {value:'广州'},
+            {value:'江门'},
+            {value:'汕头'}
+					],
+          axisLine: {
+            show:true,
+            lineStyle: {
+              color:'#494e54'
+            }
+          },
+          splitLine:{
+        　　 show:false,
+          },
+        },
+        yAxis: [
+          {
+            type:'value',
+            min:'0',
+					  name:'单位：个',
+					  splitNumber:4,
+            nameTextStyle:{
+              color:'#a4a7aa',
+              fontSize:fontSize(.14)
+					  },
+            axisLabel: {
+              color:'#a4a7aa',
+              fontSize:fontSize(.14)
+            },
+            axisTick: {
+						  show: false
+					  },
+				  	position: 'left',
+            axisLine: {
+              show:true,
+              lineStyle: {
+                color:'#494e54'
+              }
+            },
+            splitLine:{
+    　　　　 show:true,
+							lineStyle: {
+                color:'#494e54',
+                type:'solid'
+			        }
+					　},
+          }
+        ],
+        grid:{
+          top:'12%',
+			    left:'12%',
+			    right:'5%',
+          bottom:'13%'
+			  },
+        series: [
+					{
+            type:'bar',
+            name:'推介总数',
+            barCategoryGap:'50%',
+            barGap: '80%',
+            data:data[0],
+						itemStyle:{
+							normal:{
+                color:new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1, [{
+                            offset: 0,
+                            color: "#596aed",
+                        },
+                        {
+                            offset: 1,
+                            color: "#191e4f",
+                        }
+                    ]
+                ),
+								label: {
+                  show: true,
+                  position:'top',
+                  fontSize:fontSize(.14),
+                  color:'#fff',
+                  fontWeight:'bold'
+								}
+							}
+						}
+				  },
+				  {
+            type:'bar',
+            name:'已完成推介数',
+            data:data[1],
+						itemStyle:{
+							normal:{
+                color:new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1, [{
+                            offset: 0,
+                            color: "#43cbf4",
+                        },
+                        {
+                            offset: 1,
+                            color: "#191e4f",
+                        }
+                    ]
+                ),
+								label: {
+									show: true,
+                  position:'top',
+                  fontSize:fontSize(.14),
+                  color:'#fff',
+                  fontWeight:'bold'
+								}
+							}
+						}
+				  }
+        ],
+        color:['#80a6fe','#2e6bfc'],
+			}
+      myAreaOption.setOption(option);
+		}
+		//民间资本库统计
+		function capitalInvest(data){
+			var dom=document.getElementById("industry");
+			if(myCapitalOption==''||myCapitalOption==undefined){
+          myCapitalOption=echarts.init(dom);
+	    	}
+        var option={
+				title:{
+					show:false,
+					textStyle: {
+						color:'white',
+					}
+				},
+				legend: {
+					top:'15%',
+					right:'10',
+					itemGap: 20,
+          itemWidth:14,
+					show: true, 
+					data: ['投资额','完成投资'],
+          textStyle:{
+            color: fontSize(0.12),
+            fontWeight:'blod',
+          }     
+				},
+				tooltip: {
+					trigger: 'item',
+					axisPointer: {
+						type: 'shadow'
+					},
+					textStyle:{
+			      fontSize:fontSize(.18)
+			    }
+        },
+        graphic:{
+          type: 'group',
+          left: '12%',
+          bottom: '10%',
+          children: [
+            {
+              type: 'text',
+              z: 100,
+              left: 0,
+              top: 0,
+              style: {
+                  fill: '#fff',
+                  text: [
+                      '投资金额'
+                  ],
+                  font: '0.7291667vw Microsoft YaHei'
+              }
+            },
+            {
+              type: 'text',
+              z: 101,
+              left: 0,
+              top: fontSize(0.24),
+              style: {
+                  fill: '#0ddfef',
+                  text: '25112.12亿元',
+                  font: 'bold 1.0416667vw Microsoft YaHei'
+              }
+            },
+            {
+              type: 'text',
+              z: 102,
+              left: fontSize(2.2),
+              top: 0,
+              style: {
+                  fill: '#fff',
+                  text: [
+                      '项目数'
+                  ],
+                  font: '0.7291667vw Microsoft YaHei'
+              }
+            },
+            {
+              type: 'text',
+              z: 103,
+              left: fontSize(2.2),
+              top: fontSize(0.24),
+              style: {
+                  fill: '#0ddfef',
+                  text: '385个',
+                  font: 'bold 1.0416667vw Microsoft YaHei'
+              }
+            },
+            {
+              type: 'text',
+              z: 102,
+              left: fontSize(3.2),
+              top: 0,
+              style: {
+                  fill: '#fff',
+                  text: [
+                      '占比'
+                  ],
+                  font: '0.7291667vw Microsoft YaHei'
+              }
+            },
+            {
+              type: 'text',
+              z: 103,
+              left: fontSize(3.2),
+              top: fontSize(0.24),
+              style: {
+                  fill: '#0ddfef',
+                  text: '34.05%',
+                  font: 'bold 1.0416667vw Microsoft YaHei'
+              }
+            },
+          ]
+        },
+        series: [{
+          name: '民间资本库统计',
+          type: 'pie',
+          radius: '55%',
+          center: ['50%', '35%'],
+          color: [ '#344bb0', '#0a35b1', '#de9e13','#0ddfef',],
+          data: [{
+                  value: 285,
+                  name: '公开推介'
+              },
+              {
+                  value: 410,
+                  name: '已完成推介'
+              },
+              {
+                  value: 274,
+                  name: '拟推介'
+              },
+              {
+                  value: 235,
+                  name: '不公开推介'
+              }
+          ].sort(function(a, b) {
+              return a.value - b.value
+          }),
+          roseType: 'radius',
+          label: {
+            normal: {
+              padding: [0, fontSize(-0.9)],
+              show: true,
+              formatter: '{b|{b}} {c|{d}%}',
+              rich: {
+                b: {
+                  fontSize: fontSize(0.14),
+                  align: 'center',
+                  padding:[0,0,fontSize(-.25),0],
+                  color:'#dadbe2',
+                  fontWeight: 600
+                },
+                c: {
+                  fontSize: fontSize(0.14),
+                  align: 'center',
+                  padding:[0,0,fontSize(-.25),0],
+                  color:'#dadbe2',
+                  fontWeight: 400
+                },
+              },
+              position: 'outside'
+          },
+        },
+        labelLine: {
+          normal: {
+              show: true,
+              length: fontSize(0.1),
+              length2: fontSize(1)
+          },
+          emphasis: {
+              show: true
+          }
+        },
+        itemStyle: {
+          normal: {
+              shadowColor: 'rgba(0, 0, 0, 0.5)',
+              shadowBlur: 20,
+          }
+        }
+    }],
+			}
+      myCapitalOption.setOption(option);
+		}
+		//区域投资额、项目数占比、排名
+		function allInvest(data){
+			var dom=document.getElementById("important");
+			if(myProjectOption==''||myProjectOption==undefined){
+        myProjectOption=echarts.init(dom);
+	    	}
+      var option={
+				title:{
+					show:false,
+					textStyle: {
+						color:'white',
+					}
+				},
+				legend: {
+					top:'2%',
+					right:'10',
+					itemGap: 20,
+					itemWidth:14,
+					show: true, 
+					data: ['总投资额'],
+          textStyle:{
+            fontSize: fontSize(0.14),
+            color:'#fff',
+            fontWeight:'blod',
+          }     
+				},
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'line'
+					},
+					textStyle:{
+			      fontSize:fontSize(0.18)
+			    }
+        },
+				xAxis: {
+					type: 'category',
+					//boundaryGap: false,
+					axisTick: {
+						show: false
+					},
+					axisLabel: {
+					  interval:0,   
+             color: '#a4a7aa',
+             fontSize:fontSize(.14)
+			    },
+					data:[
+            {value:'东莞'},
+            {value:'佛山'},
+            {value:'潮州'},
+            {value:'深圳'},
+            {value:'广州'},
+            {value:'江门'},
+            {value:'汕头'}
+					],
+          axisLine: {
+            show:true,
+            lineStyle: {
+              color:'#494e54'
+            }
+          },
+          splitLine:{
+        　　 show:false,
+          },
+        },
+        yAxis: [
+          {
+            type:'value',
+            min:'0',
+					  name:'单位：亿元',
+					  splitNumber:5,
+            nameTextStyle:{
+              color:'#a4a7aa',
+              fontSize:fontSize(.14)
+					  },
+            axisLabel: {
+              color:'#a4a7aa',
+              fontSize:fontSize(.14)
+            },
+            axisTick: {
+						  show: false
+					  },
+				  	position: 'left',
+            axisLine: {
+              show:true,
+              lineStyle: {
+                color:'#494e54'
+              }
+            },
+            splitLine:{
+    　　　　 show:true,
+							lineStyle: {
+                color:'#494e54',
+                type:'solid'
+			        }
+					　},
+          }
+        ],
+        grid:{
+          top:'12%',
+			    left:'12%',
+			    right:'5%',
+          bottom:'13%'
+			  },
+        series: [
+          {
+            name: '总投资额',
+            type: 'line',
+            smooth: true, //是否平滑
+            showAllSymbol: true,
+            symbol: 'circle',
+            symbolSize: 10,
+            lineStyle: {
+                normal: {
+                    color: "#596aed",
+                },
+            },
+            label: {
+              normal: {
+                show: false,
+                position: 'top',
+                distance: 0,
+                offset: [fontSize(0.1), fontSize(0)],
+                color: '#fff',
+                fontSize: fontSize(0.14),
+                fontWeight: 'bold',
+                padding: [fontSize(0.12), fontSize(0.15), fontSize(0.13), fontSize(0.15)],
+                backgroundColor: {
+                  image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAAnCAYAAAC7bZ4BAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjIxQjdERDczNjk0MTFFQUJFQkU4RDIzMjY5QTZFNDAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjIxQjdERDgzNjk0MTFFQUJFQkU4RDIzMjY5QTZFNDAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMUZGN0Q4MjM2OTQxMUVBQkVCRThEMjMyNjlBNkU0MCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMUZGN0Q4MzM2OTQxMUVBQkVCRThEMjMyNjlBNkU0MCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PtWsiWoAAAEeSURBVHja7Jk/CsIwHIVj6CjFS4hX6CaIeACdBKUH8AJid3GqnsQDSMHVWReLYw+gtC4u6gtG6GCri1aa9+Drv3TI72ubBGr1mzeB1MEMtIEtzEgMAjAGBwubBtiAmjAr6oF3QQs4EpupgRLSUbVPpf4cTE9HGjQm5KUq6eARiqAIiqAIiqAIiqAIiqAIiqAIiqAIiqAIiqAIiqAIiqCI/xYRU4M4KxEBPYiVEuGBk8ESVO2eErEHDliCxCABia5Z1b5/DpYh6InHf9DKl/E/6KT/g37YuuawqFljArY57Tt9T+mnzwsY6v2rtkFGWynXEduMp+69eVtKuaBagHXqXB3PTVxZXoELjhpXXyskVsFTWARGehSPiuzIXYABAMtYLB85QK34AAAAAElFTkSuQmCC'
+                },
+              },
+              emphasis:{
+                show:true
+              }
+			       },
+            itemStyle: {
+                color: "#6c50f3",
+                borderColor: "#fff",
+                borderWidth: 2,
+            },
+            areaStyle: {
+              normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(90,73,254,0.5)'
+                    },
+                    {
+                        offset: 1,
+                        color: 'rgba(108,80,243,0)'
+                    }
+                ], false),
+                shadowColor: 'rgba(108,80,243, 0.9)',
+                shadowBlur: 20
+              }
+            },
+            data: data
+          }
+        ],
+			}
+        myProjectOption.setOption(option);
+  }
+  //所属行业投资额、项目数占比、排名
+  function industryInvest(data){
+			var dom=document.getElementById("invest");
+			if(myIndustryOption==''||myIndustryOption==undefined){
+        myIndustryOption=echarts.init(dom);
+	    	}
+	    var option={
+				title:{
+					show:false,
+					textStyle: {
+						color:'white',
+					}
+				},
+				legend: {
+					top:'2%',
+					right:'10',
+					itemGap: 20,
+					itemWidth:14,
+					show: true, 
+					data: ['总投资额'],
+          textStyle:{
+            fontSize: fontSize(0.14),
+            color:'#fff',
+            fontWeight:'blod',
+          }     
+				},
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'shadow'
+					},
+					textStyle:{
+			      fontSize:fontSize(0.18)
+			    }
+        },
+				xAxis: {
+            type:'value',
+            min:'0',
+					  //name:'单位：个',
+					  splitNumber:4,
+            nameTextStyle:{
+              show:false,
+              color:'#a4a7aa',
+              fontSize:fontSize(.14)
+					  },
+            axisLabel: {
+              color:'#a4a7aa',
+              fontSize:fontSize(.14)
+            },
+            axisTick: {
+						  show: false
+					  },
+				  	position: 'left',
+            axisLine: {
+              show:true,
+              lineStyle: {
+                color:'#494e54'
+              }
+            },
+            splitLine:{
+    　　　　 show:true,
+							lineStyle: {
+                color:'#494e54',
+                type:'solid'
+			        }
+					　},
+          },
+        yAxis: [
+          {
+            type: 'category',
+            //boundaryGap: false,
+            inverse:true,
+            axisTick: {
+              show: false
+            },
+            axisLabel: {
+              interval:0,   
+              color: '#a4a7aa',
+              fontSize:fontSize(.14)
+            },
+            data:[
+              {value:'农、林业'},
+              {value:'交通运输'},
+              {value:'建筑业'},
+              {value:'制造业'},
+              {value:'教育'},
+              {value:'电力'},
+              {value:'水利'}
+            ],
+            axisLine: {
+              show:true,
+              lineStyle: {
+                color:'#494e54'
+              }
+            },
+            splitLine:{
+          　　 show:false,
+            },
+          }
+        ],
+        grid:{
+          top:'12%',
+			    left:'15%',
+			    right:'7%',
+          bottom:'13%'
+			  },
+        series: [
+					{
+            type:'bar',
+            name:'总投资额',
+            barCategoryGap:'65%',
+            data:data,
+						itemStyle:{
+							normal:{
+                color:new echarts.graphic.LinearGradient(
+                    0, 0, 1, 0, [{
+                            offset: 0,
+                            color: "#23d5be",
+                        },
+                        {
+                            offset: 1,
+                            color: "#07b2fb",
+                        }
+                    ]
+                ),
+								label: {
+                  show: true,
+                  position:'right',
+                  fontSize:fontSize(.14),
+                  color:'#fff',
+                  fontWeight:'bold'
+								}
+							}
+						}
+				  }
+        ],
+        color:['#80a6fe','#2e6bfc'],
+			}
+      myIndustryOption.setOption(option);
+		}
+   // 地图投资数据展示
+		function graphic(data){
+		    	return [
+                    {
+                      type: 'group',
+                      left: 0,
+                      top: fontSize(.2),
+                      children: [
+                          {
+                              type: 'text',
+                              z: 100,
+                              left: fontSize(1.25),
+                              top: 0,
+                              style: {
+                                  fill: '#ffc000',
+                                  text: data.sum,
+                                  font: 'bold 2.3vw Microsoft YaHei'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 101,
+                              left: fontSize(1.25),
+                              top: fontSize(.55),
+                              style: {
+                                  fill: '#fff',
+                                  text: '项目数(个)',
+                                  font: '0.9375vw Microsoft YaHei'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 100,
+                              left: fontSize(3.15),
+                              top: 0,
+                              style: {
+                                  fill: '#ffc000',
+                                  text: data.invest,
+                                  font: 'bold 2.3vw Microsoft YaHei'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 101,
+                              left: fontSize(3.15),
+                              top: fontSize(.55),
+                              style: {
+                                  fill: '#fff',
+                                  text: '总投资额(亿元)',
+                                  font: '0.9375vw Microsoft YaHei'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 100,
+                              left: fontSize(5.25),
+                              top: 0,
+                              style: {
+                                  fill: '#ffc000',
+                                  text: data.completeInvest,
+                                  font: 'bold 2.3vw Microsoft YaHei'
+                              }
+                          },
+                          {
+                              type: 'text',
+                              z: 101,
+                              left: fontSize(5.25),
+                              top: fontSize(.55),
+                              style: {
+                                  fill: '#fff',
+                                  text: '完成投资额(亿元)',
+                                  font: '0.9375vw Microsoft YaHei'
+                              }
+                          },
+                      ]
+                  }
+              ]
+        }
+		function map(area,data,mapData){
+      debugger
+			if(myMapOption==''||myMapOption==undefined){
+	    		myMapOption= echarts.init(document.getElementById('map'));
+	    	}	
+        for(var i=0;i<mapData.length;i++){
+          mapData[i].value[2]=mapData[i].invest;
+        }
+			  var option={
+		    	title:{
+		    		show:false
+		    	},
+		    	tooltip : {
+            trigger: 'item',
+            textStyle:{
+              fontSize:fontSize(.18)
+            }
+          },
+          visualMap: {
+            min: 0,
+            max: 1000,
+            right:'15%',
+            seriesIndex:0,
+            text: ['高', '低'], // 文本，默认为数值文本
+            calculable: true,
+            color:['#7917ff','#199bf9','#1745ff'],
+            textStyle:{
+              color:'#fff'
+            }
+			    },
+			    graphic:graphic(data),
+				  geo: [
+					  {
+              map: area,
+              roam: true,
+              zoom: 1,
+              layoutCenter:['50%','58%'],
+              layoutSize:'90%',
+              z:100,
+              label: {
+                show: true,
+                color:'#fff',
+                fontSize:fontSize(.14)
+              },
+              roam: false,
+              itemStyle: {
+                  normal: {
+                    borderColor: '#ffffff',
+                    borderWidth:2,
+                  },
+              },
+			      },
+			      {
+              map: area,
+              layoutCenter:['50.5%','58.5%'],
+              layoutSize:'90%',
+              z:4,
+              label: {
+                emphasis: {
+                    show: false
+                }
+              },
+              roam: false,
+              itemStyle: {
+                normal: {
+                  areaColor: '#1f295b',
+                  borderColor: '#1f61cf',
+                  borderWidth:0,
+                }
+              }
+            },
+            {
+              map: area,
+              layoutCenter:['51%','59%'],
+              layoutSize:'90%',
+              z:3,
+              label: {
+                emphasis: {
+                  show: false
+                }
+              },
+              roam: false,
+              itemStyle: {
+                normal: {
+                  areaColor: '#11183c',
+                  borderColor: '#1f61cf',
+                  borderWidth:0,
+                  
+                }
+              }
+            }
+          ],
+            series: [
+              {
+                center: "center",
+                data: mapData,
+                geoIndex:0,
+                type: "map",
+                tooltip : {
+                  trigger: 'item',
+                  formatter:function(data){
+                    if(type==0){
+                      return data.name +'<br>项目个数：'+ data.data.value[2]+'个<br>投资额：'+data.data.invest+'亿元';
+                    }else{
+                      return data.name +'<br>总投资：'+ data.data.invest+'亿元';
+                    }
+                    
+                  }
+                },
+              },         
+		    		]
+		    	}
+          myMapOption.setOption(option,true);
+          
+				  myMapOption.on("mouseover", function (params){
+            myMapOption.dispatchAction({
+              type: 'downplay'
+            })
+          });
+      }
+      
+	</script>
+</body>
+</html>
